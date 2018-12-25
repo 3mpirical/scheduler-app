@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+}
+
+.calendar {
+    position: relative;
+    width: 30rem;
+    margin: 10rem auto;
+
+
+    .calendar__heading-title {
+        display: inline-block;
+    }
+
+
+    .calendar__box {
+        position: relative;
+        display: inline-block;
+        height: 4rem;
+        width: 4rem;
+        border: 1px solid black;
+
+        .calendar__date {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
