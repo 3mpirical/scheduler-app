@@ -1,0 +1,27 @@
+===========================
+    Planner File
+===========================
+
+MAIN_FEATURES______________
+* To have a calendar searchable by month in which events can be recorded.
+* To create events on a given day, and allow them to be dragged to other dates.
+* To have a weekly view vs a monthly calendar option.
+    ^Display side by side? or alternatively?
+* To search Events by name, past, future, or both.
+* To authenticate for specific users and their own personal calendars.
+* To provide push notifications when events are nearing.
+    ^and configure when you would like said notifications.
+
+***** A simple and intuitive user experience is top priority; more !=== better *****
+
+CONSIDERED_FEATURES________
+* Decide if you want this to be a general planner, or specific to some domain
+    ^(think planning projects, like planning books, or project management)
+
+* On project management, consider creating a timeline which you can enter dates and have them be populated to your calendar. The project timeline itself will be the main source for management. Is it easier interface for planning than manually entering into the calendar..?
+    ^If we wanted to go this route, then it may be worthwhile to create a project application where we create the timeline and enter project details via files and directory.
+
+PLANNED_IMPLEMENTATIONS____
+1) Redo user interface for calendar.
+    Make the 35 squares hard coded, then select as nodeList, then append date information to that list as needed.
+    *this will allow you to customize the interface better and index the square numbers on the calendar rather than referencing them only by their dates.
