@@ -49,19 +49,11 @@ const VIEW = {
     },
 
     printCalendarDays: function(month, year) {
-        getCalendarDays(month, year)
-            .map((item, index, arr) => {
-                const node = document.createElement("div");
-                node.classList.add("calendar__box");
-                node.innerHTML =
-                `
-                    <p class="calendar__date ${item}">${item}</p>
-                `;
+        const datesArr = getCalendarDays(month, year);
 
-                return node;
-            })
+        elements.calendarDates
             .forEach((item, index, arr) => {
-                document.querySelector(".calendar__dates-container").appendChild(item);
+                item.innerText = datesArr[index];
             });
     }
 
