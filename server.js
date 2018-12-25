@@ -1,7 +1,7 @@
-const   express = require("express"),
-        app = express(),
-        bodyParser = require("body-parser"),
-        colors = require("colors"),
+const   express      = require("express"),
+        app          = express(),
+        bodyParser   = require("body-parser"),
+        colors       = require("colors"),
 
         appPageRoute = require("./routes/pages/appRoutes");
 
