@@ -3,14 +3,15 @@ import { state } from "../state";
 import { elements } from "../elements";
 
 // local functions==========
+const monthArr = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-// Here, month 1 = January. Index does not start at 0
+// Index starts at 0 so.... January === 0
 const daysInMonth = (month, year) => {
-    return new Date(year, month, 0).getDate();
+    return new Date(year, month + 1 , 0).getDate();
 };
 
 const getMonthsFirstDay = (month, year) => {
-    return new Date(month + 1, year, 1).getDay();
+    return new Date(year, month, 1).getDay();
 };
 
 
@@ -32,6 +33,17 @@ const getCalendarArray = (month, year) => {
 
     for(let i = prevMonthStart; i <= prevMonthDays; i++ ) {
         const node = document.createElement("div");
+
+        if(month - 1 === -1) {
+            node.setAttribute("year", year - 1);
+            node.setAttribute("month", 11 );
+            node.setAttribute("day", i);
+        } else {
+            node.setAttribute("year", year);
+            node.setAttribute("month", month -1);
+            node.setAttribute("day", i);
+        }
+
         node.classList.add("calendar__box-content", "dark");
         node.innerHTML =`<div class="calendar__date">${i}</div>`;
 
@@ -40,6 +52,11 @@ const getCalendarArray = (month, year) => {
 
     for(let i = 1; i <= currMonthDays; i++ ) {
         const node = document.createElement("div");
+
+        node.setAttribute("year", year);
+        node.setAttribute("month", month);
+        node.setAttribute("day", i);
+
         node.classList.add("calendar__box-content");
         node.innerHTML =`<div class="calendar__date">${i}</div>`;
 
@@ -48,6 +65,17 @@ const getCalendarArray = (month, year) => {
 
     for(let i = 1; i < (42 - currMonthDays - prevMonthDaysToDisplay); i++) {
         const node = document.createElement("div");
+
+        if(month + 1 === 12) {
+            node.setAttribute("year", year + 1);
+            node.setAttribute("month", 1 );
+            node.setAttribute("day", i);
+        } else {
+            node.setAttribute("year", year);
+            node.setAttribute("month", month + 1);
+            node.setAttribute("day", i);
+        }
+
         node.classList.add("calendar__box-content", "dark");
         node.innerHTML =`<div class="calendar__date">${i}</div>`;
 
@@ -59,17 +87,41 @@ const getCalendarArray = (month, year) => {
 
 
 
+const clearCalendarContent = () => {
+    const contentNodes = elements.calendarContent();
+
+    contentNodes.forEach((item, index, arr) => {
+        item.parentNode.removeChild(item);
+    });
+};
+
+
 // exported functions ==========
 const VIEW = {
 
-    printHeading: function(month, year) {
-        const dateString = new Date().toDateString();
+    printHeading: function() {
+        const node = document.createElement("div");
+        node.classList.add("calendar__heading-items");
+        node.innerHTML =`
+            <span class="calendar__heading-month">${monthArr[state.headingMonth]}</span>
+            <span class="calendar__heading-year">${state.headingYear}</span>`
+            ;
+
+        elements.calendarHeading.appendChild(node);
+    },
+
+    printSelected: function() {
+        // const dateString = new Date(year, month, day).toDateString();
 
         const node = document.createElement("div");
-        node.classList.add("calendar__heading-title");
-        node.innerHTML =`<h2>${dateString}</h2>`;
+        node.classList.add("calendar__selected-items");
+        node.innerHTML =`
+            <span class="calendar__selected-day">${state.selectedDay}</span>
+            <span class="calendar__selected-month">${monthArr[state.selectedMonth]}</span>
+            <span class="calendar__selected-year">${state.selectedYear}</span>`
+            ;
 
-        document.querySelector(".calendar__heading").appendChild(node);
+        elements.calendarSelected.appendChild(node);
     },
 
     printCalendarDays: function(month, year) {
@@ -80,6 +132,53 @@ const VIEW = {
                 item.appendChild(datesArr[index]);
             });
 
+    },
+
+    clearHeading: function() {
+        elements.calendarHeading.innerHTML = "";
+    },
+
+    clearSelected: function() {
+        elements.calendarSelected.innerHTML = "";
+    },
+
+    clearCalendar: function() {
+        this.clearHeading();
+        clearCalendarContent();
+    },
+
+    initialHighlight: function() {
+        //get index of todays box
+
+
+        elements.calendarContent().forEach((item, index, arr) => {
+            if( parseInt(item.getAttribute("day")) === state.selectedDay
+                && parseInt(item.getAttribute("month")) === state.selectedMonth
+                && parseInt(item.getAttribute("year")) === state.selectedYear)
+                {
+                console.log(item);
+                state.indexOfBox = parseInt(item.parentNode.getAttribute("index"));
+            }
+
+        });
+
+        console.log(state.indexOfBox);
+
+        state.selectedBox = elements.calendarContent()[state.indexOfBox];
+        state.selectedBox.classList.add("highlight");
+    },
+
+    updateHighlight: (event) => {
+        state.indexOfBox = parseInt(event.target.parentNode.getAttribute("index"));
+
+        try {
+            state.selectedBox.classList.remove("highlight");
+        }  catch(err) {
+            console.log("first box selected");
+        }
+
+        state.selectedBox = elements.calendarContent()[state.indexOfBox];
+        state.selectedBox.classList.add("highlight");
     },
 };
 
