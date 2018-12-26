@@ -3,7 +3,6 @@ import { state } from "../state";
 import { elements } from "../elements";
 import { baseView } from "./_baseView";
 
-console.log(baseView.monthArr);
 const monthArr = baseView.monthArr;
 
 // local functions ==========

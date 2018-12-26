@@ -3,14 +3,13 @@ import { state } from "../state";
 import { elements } from "../elements";
 
 const highlightView = {
-    
+
     initialHighlight: function() {
         elements.calendarContent().forEach((item, index, arr) => {
             if( parseInt(item.getAttribute("day")) === state.selectedDay
                 && parseInt(item.getAttribute("month")) === state.selectedMonth
                 && parseInt(item.getAttribute("year")) === state.selectedYear)
                 {
-                console.log(item);
                 state.indexOfBox = parseInt(item.parentNode.getAttribute("index"));
             }
 
