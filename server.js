@@ -1,7 +1,7 @@
 const   express      = require("express"),
         app          = express(),
         bodyParser   = require("body-parser"),
-        colors       = require("colors"),
+        // colors       = require("colors"),
 
         appPageRoute = require("./routes/pages/appRoutes");
 
@@ -25,5 +25,5 @@ app.get("*", (req, res) => {
 
 // SERVER START
 app.listen(PORT, () => {
-    console.log(`Server has started on PORT: ${PORT}`.green);
+    console.log(`Server has started on PORT: ${PORT}`);
 });
