@@ -1,7 +1,7 @@
 const   express = require("express"),
         router  = express.Router();
 
-router.get("/app", (req, res) => {
+router.get("/", (req, res) => {
     res.status(200)
         .render("index");
 });
