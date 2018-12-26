@@ -22,6 +22,22 @@ CONSIDERED_FEATURES________
     ^If we wanted to go this route, then it may be worthwhile to create a project application where we create the timeline and enter project details via files and directory.
 
 PLANNED_IMPLEMENTATIONS____
-1) Redo user interface for calendar.
-    Make the 35 squares hard coded, then select as nodeList, then append date information to that list as needed.
+//  1) Redo user interface for calendar.
+    Make the 42 squares hard coded, then select as nodeList, then append date information to that list as needed.
     *this will allow you to customize the interface better and index the square numbers on the calendar rather than referencing them only by their dates.
+/////complete
+
+2) Format and style the heading properly so that it displays the entire month,
+    day, year, and day of the week.
+
+3) Add left/right (or up and down?) buttons to shift back and forth between
+    months, then alter javascript to reflect user input. Make sure to create
+    appropriate state variables for the selected month.
+
+4) Create partials for the header and the footer. It won't be a full
+    application yet, but it should look like a legit website to some extent.
+
+5) Build in user authentication: routes, pages for login, appropriate
+    hbs conditionals to display proper screens.
+
+6) Plan the schema and model for events. 
