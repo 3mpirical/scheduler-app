@@ -23,7 +23,7 @@ body {
 .calendar {
     position: relative;
     width: 60rem;
-    height: 60rem;
+    height: 65rem;
     margin: 10rem auto;
     padding: 2rem 1rem;
     background-color: white;
@@ -31,21 +31,38 @@ body {
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 
 
-    .calendar__heading-title {
+    .calendar__heading-items {
         font-family: sans-serif;
+        font-size: 2.5rem;
         position: absolute;
-        top: 2%;
+        top: 1%;
         left: 3%;
     }
 
+    .calendar__month-buttons {
+        position: absolute;
+        top: 2%;
+        right: 4%;
 
+        button {
+            width: 2.5rem;
+            height: 2.5rem;
+            font-size: 2rem;
+            vertical-align: top;
+        }
+    }
 
+    .calendar__selected-items {
+        position: absolute;
+        bottom: 1%;
+        left: 3%;
+    };
 
     .calendar__dates-container{
         position: absolute;
         height: 90%;
         width: 95%;
-        top: 53%;
+        top: 52%;
         left: 50%;
         transform: translate(-50%, -50%);
 
@@ -114,9 +131,18 @@ body {
 
                     &:first-of-type {
                         border-bottom-left-radius: 10px;
+
+                        .calendar__box-content {
+                            border-bottom-left-radius: 10px;
+                        }
                     }
+
                     &:last-of-type {
                         border-bottom-right-radius: 10px;
+
+                        .calendar__box-content {
+                            border-bottom-right-radius: 10px;
+                        }
                     }
                 }
             }
@@ -135,22 +161,8 @@ body {
                 //first box in rows
                 &:first-of-type {
                     border-left: 1px solid black;
-
-                    .dark{
-                        border-top-left-radius: 10px
-                    }
                 }
 
-                //last box in rows
-                &:last-of-type {
-                    .dark {
-                        border-bottom-right-radius: 10px;
-                    }
-                }
-
-                &:hover {
-                    background-color: #B2FF59;
-                }
 
                 .calendar__box-content {
                     height: 100%;
@@ -169,8 +181,19 @@ body {
 
                 .dark {
                     background-color: darken(#E0F7FA, 4%);
+
+                    &:hover {
+                        background-color: #B2FF59;
+                    }
                 }
 
+                .highlight {
+                    background-color: #FFEE58;
+                }
+
+                &:hover {
+                    background-color: #B2FF59;
+                }
             }
 
         }
