@@ -7,15 +7,21 @@ import { elements } from "./elements";
 const CTRL = (function(MDL, VIEW, state, elements) {
 
     const initializeCalendar = () => {
-        state.currMonth = new Date().getMonth();
+        state.currMonth = new Date().getMonth() + 1;
         state.currYear = new Date().getFullYear();
         VIEW.printHeading();
         VIEW.printCalendarDays(state.currMonth, state.currYear);
     };
 
+    const getCalendarByDate = (month, year) => {
+        VIEW.printHeading();
+        VIEW.printCalendarDays(month, year);
+    };
+
 
     return {
         initializeCalendar,
+        getCalendarByDate,
     };
 } (MDL, VIEW, state, elements) );
 

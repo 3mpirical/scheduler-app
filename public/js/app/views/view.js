@@ -9,25 +9,49 @@ const daysInMonth = (month, year) => {
     return new Date(year, month, 0).getDate();
 };
 
+const getMonthsFirstDay = (month, year) => {
+    return new Date(month + 1, year, 1).getDay();
+};
 
-const getCalendarDays = (month, year) => {
-    // get current months days
+
+const getCalendarArray = (month, year) => {
+    // get current months total days
     const currMonthDays = daysInMonth(month, year);
-    // get prior months days (prior month end)
-    const prevMonthDays = daysInMonth(month - 1, year);
-    // subtract current months from 35 days (days to display from prior month).
-    //    ^34 will cause 35 days to be displayed; 35 causes 36 to be displayed.
-    // subtract result from prior months days (prior month start).
-    const prevMonthStart = prevMonthDays - (34 - currMonthDays);
 
-    // display result starting with prior month start, then to prior month end, then all current days.
+    // get the total number of days in the previous month
+    const prevMonthDays = daysInMonth(month - 1, year);
+
+    //gets the number of days we want to display from previous month by subtracting the index of the first day of the week.
+    const prevMonthDaysToDisplay = getMonthsFirstDay(month, year) -1;
+
+    //finds the first day of previous month to be displayed by subtracting the total number of days in the previous month by the number of days we want to display.
+    const prevMonthStart = prevMonthDays - prevMonthDaysToDisplay;
+
+    // Builds array to append starting with the first day to display of the previous month, then all current month days, then next month's days up to a total of 42.
     const datesArr = [];
 
     for(let i = prevMonthStart; i <= prevMonthDays; i++ ) {
-        datesArr.push(i);
+        const node = document.createElement("div");
+        node.classList.add("calendar__box-content", "dark");
+        node.innerHTML =`<div class="calendar__date">${i}</div>`;
+
+        datesArr.push(node);
     }
+
     for(let i = 1; i <= currMonthDays; i++ ) {
-        datesArr.push(i);
+        const node = document.createElement("div");
+        node.classList.add("calendar__box-content");
+        node.innerHTML =`<div class="calendar__date">${i}</div>`;
+
+        datesArr.push(node);
+    }
+
+    for(let i = 1; i < (42 - currMonthDays - prevMonthDaysToDisplay); i++) {
+        const node = document.createElement("div");
+        node.classList.add("calendar__box-content", "dark");
+        node.innerHTML =`<div class="calendar__date">${i}</div>`;
+
+        datesArr.push(node);
     }
 
     return (datesArr);
@@ -38,7 +62,7 @@ const getCalendarDays = (month, year) => {
 // exported functions ==========
 const VIEW = {
 
-    printHeading: function() {
+    printHeading: function(month, year) {
         const dateString = new Date().toDateString();
 
         const node = document.createElement("div");
@@ -49,15 +73,16 @@ const VIEW = {
     },
 
     printCalendarDays: function(month, year) {
-        const datesArr = getCalendarDays(month, year);
+        const datesArr = getCalendarArray(month, year);
 
-        elements.calendarDates
+        elements.calendarBoxes
             .forEach((item, index, arr) => {
-                item.innerText = datesArr[index];
+                item.appendChild(datesArr[index]);
             });
-    }
 
+    },
 };
+
 
 
 

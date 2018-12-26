@@ -1,5 +1,5 @@
 const elements = {
-    calendarDates: [...document.querySelectorAll(".calendar__date")],
+    calendarBoxes: [...document.querySelectorAll(".calendar__box")],
 };
 
 export { elements };
