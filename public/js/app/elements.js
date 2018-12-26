@@ -1,10 +1,6 @@
 const elements = {
     calendarHeading: document.querySelector(".calendar__heading"),
-
     calendarSelected: document.querySelector(".calendar__selected"),
-    calSelectedDay: document.querySelector(".calendar__selected-day"),
-    calSelectedMonth: document.querySelector(".calendar__selected-month"),
-    calSelectedYear: document.querySelector(".calendar__selected-year"),
 
     calendarContainer: document.querySelector(".calendar__dates-container"),
     calendarBoxes: [...document.querySelectorAll(".calendar__box")],
