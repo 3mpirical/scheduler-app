@@ -27,12 +27,17 @@ PLANNED_IMPLEMENTATIONS____
     *this will allow you to customize the interface better and index the square numbers on the calendar rather than referencing them only by their dates.
 /////complete
 
-2) Format and style the heading properly so that it displays the entire month,
-    day, year, and day of the week.
-
-3) Add left/right (or up and down?) buttons to shift back and forth between
+//2) Add left/right (or up and down?) buttons to shift back and forth between
     months, then alter javascript to reflect user input. Make sure to create
     appropriate state variables for the selected month.
+/////complete
+
+//3) Format and style the heading properly so that it displays the entire month,
+    day, year, and day of the week.
+    ^note that currently when you select a day that is within a previous
+    month or next month, the current day changes but not the month.
+    So the heading becomes inaccurate compared to the selected box.
+/////complete
 
 4) Create partials for the header and the footer. It won't be a full
     application yet, but it should look like a legit website to some extent.
@@ -40,4 +45,4 @@ PLANNED_IMPLEMENTATIONS____
 5) Build in user authentication: routes, pages for login, appropriate
     hbs conditionals to display proper screens.
 
-6) Plan the schema and model for events. 
+6) Plan the schema and model for events.
