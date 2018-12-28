@@ -18,14 +18,15 @@ body {
   transform: translate(-50%, -50%); }
 
 .calendar {
-  position: relative;
+  position: absolute;
+  left: 5rem;
   width: 60rem;
   height: 65rem;
   margin: 10rem auto;
   padding: 2rem 1rem;
   background-color: #37474F;
   color: #CFD8DC;
-  border-radius: 10px;
+  border-radius: 6px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); }
   .calendar .calendar__heading-items {
     font-family: "Roboto", sans-serif;
@@ -60,11 +61,11 @@ body {
     top: 52%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 10px; }
+    border-radius: 8px; }
     .calendar .calendar__dates-container::before {
       content: " ";
       background-color: #CFD8DC;
-      border-radius: 10px;
+      border-radius: 8px;
       position: absolute;
       top: -0.1rem;
       left: 0rem;
@@ -75,8 +76,8 @@ body {
       justify-content: space-evenly;
       height: 5%;
       width: 100%;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px; }
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px; }
       .calendar .calendar__dates-container .calendar__days-header .red {
         color: #CE93D8; }
       .calendar .calendar__dates-container .calendar__days-header .day-of-week {
@@ -89,9 +90,9 @@ body {
         border-radius: 6px;
         background-color: #3F51B5; }
         .calendar .calendar__dates-container .calendar__days-header .day-of-week:first-of-type {
-          border-top-left-radius: 10px; }
+          border-top-left-radius: 8px; }
         .calendar .calendar__dates-container .calendar__days-header .day-of-week:last-of-type {
-          border-top-right-radius: 10px; }
+          border-top-right-radius: 8px; }
     .calendar .calendar__dates-container .calendar__dates-row {
       display: flex;
       justify-content: space-evenly;
@@ -99,24 +100,18 @@ body {
       width: 100%; }
       .calendar .calendar__dates-container .calendar__dates-row .red {
         color: #CE93D8; }
-      .calendar .calendar__dates-container .calendar__dates-row:first-child {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px; }
-        .calendar .calendar__dates-container .calendar__dates-row:first-child .calendar__box:first-of-type {
-          border-top-left-radius: 10px; }
-        .calendar .calendar__dates-container .calendar__dates-row:first-child .calendar__box:last-of-type {
-          border-top-right-radius: 10px; }
-      .calendar .calendar__dates-container .calendar__dates-row:last-child {
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px; }
-        .calendar .calendar__dates-container .calendar__dates-row:last-child .calendar__box:first-of-type {
-          border-bottom-left-radius: 10px; }
-          .calendar .calendar__dates-container .calendar__dates-row:last-child .calendar__box:first-of-type .calendar__box-content {
-            border-bottom-left-radius: 10px; }
-        .calendar .calendar__dates-container .calendar__dates-row:last-child .calendar__box:last-of-type {
-          border-bottom-right-radius: 10px; }
-          .calendar .calendar__dates-container .calendar__dates-row:last-child .calendar__box:last-of-type .calendar__box-content {
-            border-bottom-right-radius: 10px; }
+      .calendar .calendar__dates-container .calendar__dates-row:first-child .calendar__box:first-of-type {
+        border-top-left-radius: 8px; }
+      .calendar .calendar__dates-container .calendar__dates-row:first-child .calendar__box:last-of-type {
+        border-top-right-radius: 8px; }
+      .calendar .calendar__dates-container .calendar__dates-row:last-child .calendar__box:first-of-type {
+        border-bottom-left-radius: 8px; }
+        .calendar .calendar__dates-container .calendar__dates-row:last-child .calendar__box:first-of-type .calendar__box-content {
+          border-bottom-left-radius: 8px; }
+      .calendar .calendar__dates-container .calendar__dates-row:last-child .calendar__box:last-of-type {
+        border-bottom-right-radius: 8px; }
+        .calendar .calendar__dates-container .calendar__dates-row:last-child .calendar__box:last-of-type .calendar__box-content {
+          border-bottom-right-radius: 8px; }
       .calendar .calendar__dates-container .calendar__dates-row .calendar__box {
         position: relative;
         display: inline-flex;

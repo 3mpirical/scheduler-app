@@ -28,14 +28,15 @@ body {
 
 
 .calendar {
-    position: relative;
+    position: absolute;
+    left: 5rem;
     width: 60rem;
     height: 65rem;
     margin: 10rem auto;
     padding: 2rem 1rem;
     background-color: #37474F;
     color: #CFD8DC;
-    border-radius: 10px;
+    border-radius: 6px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 
 
@@ -80,12 +81,12 @@ body {
         top: 52%;
         left: 50%;
         transform: translate(-50%, -50%);
-        border-radius: 10px;
+        border-radius: 8px;
 
         &::before {
             content: " ";
             background-color: #CFD8DC;
-            border-radius: 10px;
+            border-radius: 8px;
 
             position: absolute;
             top: -0.1rem;
@@ -99,8 +100,8 @@ body {
             justify-content: space-evenly;
             height: 5%;
             width: 100%;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
 
             .red {
                 color: #CE93D8;
@@ -117,10 +118,10 @@ body {
                 background-color: #3F51B5;
 
                 &:first-of-type {
-                    border-top-left-radius: 10px;
+                    border-top-left-radius: 8px;
                 }
                 &:last-of-type {
-                    border-top-right-radius: 10px;
+                    border-top-right-radius: 8px;
                 }
             }
         };
@@ -138,39 +139,39 @@ body {
 
             //first row
             &:first-child {
-                border-top-left-radius: 10px;
-                border-top-right-radius: 10px;
+                // border-top-left-radius: 8px;
+                // border-top-right-radius: 8px;
 
                 .calendar__box {
                     &:first-of-type {
-                        border-top-left-radius: 10px;
+                        border-top-left-radius: 8px;
                     }
                     &:last-of-type{
-                        border-top-right-radius: 10px;
+                        border-top-right-radius: 8px;
                     }
                 }
             }
 
             //last row
             &:last-child {
-                border-bottom-left-radius: 10px;
-                border-bottom-right-radius: 10px;
+                // border-bottom-left-radius: 10px;
+                // border-bottom-right-radius: 10px;
 
                 .calendar__box {
 
                     &:first-of-type {
-                        border-bottom-left-radius: 10px;
+                        border-bottom-left-radius: 8px;
 
                         .calendar__box-content {
-                            border-bottom-left-radius: 10px;
+                            border-bottom-left-radius: 8px;
                         }
                     }
 
                     &:last-of-type {
-                        border-bottom-right-radius: 10px;
+                        border-bottom-right-radius: 8px;
 
                         .calendar__box-content {
-                            border-bottom-right-radius: 10px;
+                            border-bottom-right-radius: 8px;
                         }
                     }
                 }
