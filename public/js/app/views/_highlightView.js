@@ -5,7 +5,9 @@ import { elements } from "../elements";
 const highlightView = {
 
     initialHighlight: function() {
-        elements.calendarContent().forEach((item, index, arr) => {
+        const contentArr = elements.calendarContent();
+
+        contentArr.forEach((item, index, arr) => {
             if( parseInt(item.getAttribute("day")) === state.selectedDay
                 && parseInt(item.getAttribute("month")) === state.selectedMonth
                 && parseInt(item.getAttribute("year")) === state.selectedYear)
@@ -15,7 +17,7 @@ const highlightView = {
 
         });
 
-        state.selectedBox = elements.calendarContent()[state.indexOfBox];
+        state.selectedBox = contentArr[state.indexOfBox];
         state.selectedBox.classList.add("highlight");
     },
 

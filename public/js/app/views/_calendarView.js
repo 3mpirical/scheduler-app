@@ -99,7 +99,6 @@ const clearCalendarContent = () => {
 const calendarView = {
 
     clearCalendar: function() {
-        this.clearHeading();
         clearCalendarContent();
     },
 

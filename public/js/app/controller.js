@@ -25,6 +25,8 @@ const decrementCalendarMonth = () => {
     } else {
         state.headingMonth -=  1;
     }
+    VIEW.clearHeading();
+    VIEW.clearSelected();
     VIEW.clearCalendar();
     VIEW.printHeading();
     VIEW.printCalendarDays(state.headingMonth, state.headingYear);
@@ -36,6 +38,8 @@ const incrementCalendarMonth = () => {
     } else {
         state.headingMonth +=  1;
     }
+    VIEW.clearHeading();
+    VIEW.clearSelected();
     VIEW.clearCalendar();
     VIEW.printHeading();
     VIEW.printCalendarDays(state.headingMonth, state.headingYear);
