@@ -18,11 +18,12 @@ body {
   transform: translate(-50%, -50%); }
 
 .calendar {
-  position: absolute;
+  display: inline-block;
+  position: relative;
+  top: 10rem;
   left: 5rem;
   width: 60rem;
   height: 65rem;
-  margin: 10rem auto;
   padding: 2rem 1rem;
   background-color: #37474F;
   color: #CFD8DC;
@@ -137,3 +138,28 @@ body {
           background-color: #4DB6AC; }
         .calendar .calendar__dates-container .calendar__dates-row .calendar__box:hover {
           background-color: #CE93D8; }
+
+.event-pane {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  top: 10rem;
+  left: 5rem;
+  width: 40rem;
+  height: 65rem;
+  background-color: #37474F;
+  color: #CFD8DC;
+  border-radius: 6px; }
+  .event-pane .event-pane__header {
+    position: absolute;
+    width: 75%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    font-family: "Roboto", sans-serif;
+    background-color: rgba(0, 0, 0, 0.2); }
+    .event-pane .event-pane__header p {
+      text-align: center; }
+    .event-pane .event-pane__header li {
+      font-size: 1.3rem;
+      font-family: "Open Sans", sans-serif; }
