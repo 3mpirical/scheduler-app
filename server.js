@@ -1,16 +1,16 @@
 const   express      = require("express"),
         app          = express(),
         bodyParser   = require("body-parser"),
-        // colors       = require("colors"),
-
+        hbs          = require("hbs"),
         appPageRoute = require("./routes/pages/appRoutes");
 
 // SETUP
 const PORT = process.env.PORT || 3005;
 app.set("view engine", "hbs");
-app.use(express.static("public"));
+app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+hbs.registerPartials(__dirname + "/views/partials");
 
 
 // ROUTES
