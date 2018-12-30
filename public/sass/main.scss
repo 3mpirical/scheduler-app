@@ -10,7 +10,7 @@ $background-color-two: #455A64;
 
 html {
     font-size: 62.5%;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 body {
@@ -30,10 +30,10 @@ body {
 .calendar {
     display: inline-block;
     position: relative;
-    top: 10rem;
+    top: 0rem;
     left: 0rem;
-    width: 60rem;
-    height: 65rem;
+    width: 50rem;
+    height: 55rem;
     padding: 2rem 1rem;
     background-color: #37474F;
     color: #CFD8DC;
@@ -63,9 +63,10 @@ body {
             border-color: #CFD8DC;
             color: #CFD8DC;
             font-size: 2rem;
-            font-family: "Open Sans", sans-serif;
+            font-family: "Roboto", sans-serif;
             vertical-align: top;
             border-radius: 5px;
+            cursor: pointer;
         }
     }
 
@@ -76,6 +77,9 @@ body {
     };
 
     .calendar__dates-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
         position: absolute;
         height: 90%;
         width: 95%;
@@ -86,20 +90,23 @@ body {
 
         &::before {
             content: " ";
+            display: block;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            // top: 50%;
+            // left: 50%;
+            // transform: translate(-50%, -50%);
             background-color: #CFD8DC;
             border-radius: 8px;
 
-            position: absolute;
-            top: -0.1rem;
-            left: 0rem;
-            right: 0em;
-            bottom: 0rem;
+
             }
 
         .calendar__days-header {
             display: flex;
             justify-content: space-evenly;
-            height: 5%;
+            height: 4.9%;
             width: 100%;
             border-top-left-radius: 8px;
             border-top-right-radius: 8px;
@@ -111,12 +118,14 @@ body {
             .day-of-week{
                 display: flex;
                 position: relative;
-                height: 96%;
+                height: 100%;
                 width: calc(100%/7.1);
-                font-size: 1.4rem;
+                font-size: 1.1rem;
                 font-family: sans-serif;
                 border-radius: 6px;
                 background-color: #3F51B5;
+
+
 
                 &:first-of-type {
                     border-top-left-radius: 8px;
@@ -131,7 +140,7 @@ body {
         .calendar__dates-row {
             display: flex;
             justify-content: space-evenly;
-            height: calc(95% / 6);
+            height: calc(95% / 6.1);
             width: 100%;
 
             .red {
@@ -176,7 +185,7 @@ body {
             .calendar__box {
                 position: relative;
                 display: inline-flex;
-                height: 99%;
+                height: 100%;
                 width: calc(100%/7.1);
                 background-color: #455A64;
                 border-radius: 8px;
@@ -223,10 +232,10 @@ body {
     display: inline-block;
     vertical-align: top;
     position: relative;
-    top: 10rem;
+    top: 0rem;
     left: 0rem;
-    width: 60rem;
-    height: 65rem;
+    width: 50rem;
+    height: 55rem;
     background-color: #37474F;
     color: #CFD8DC;
     border-radius: 6px;
@@ -247,7 +256,152 @@ body {
 
         li {
             font-size: 1.3rem;
-            font-family: "Open Sans", sans-serif;
+            font-family: "Roboto", sans-serif;
         }
+    }
+}
+
+header{
+    color: #CFD8DC;
+    position: relative;
+
+    &::before {
+        content: " ";
+        display: block;
+        min-width: 430px;
+        width: 100vw;
+        height: 6.5rem;
+        margin-bottom: 0.5rem;
+        background-color: rgba(0,0,0,0.3);
+    }
+
+    .header__logo {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        font-family: "Major Mono Display";
+        letter-spacing: 3px;
+        color: #4DB6AC;
+        z-index: 1;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover{
+            transform: scaleX(0.9) translateX(-1rem);
+
+            + .header__arrow {
+                transform: scaleX(1.1) translateX(1rem);
+            }
+        }
+    }
+
+    .header__slogan {
+        position: absolute;
+        left: 1.3rem;
+        top: 4.4rem;
+        width: 30rem;
+        height: 4rem;
+
+        p:first-of-type {
+            display: inline-block;
+            position: absolute;
+            font-family: "Roboto";
+            font-size: 1.1rem;
+            color: #4DB6AC;
+        }
+
+        p:nth-of-type(2) {
+            display: inline-block;
+            position: absolute;
+            left: 6.4rem;
+            font-family: "Roboto";
+            font-size: 1.1rem;
+            color: lighten(#3F51B5, 10%);
+        }
+
+        p:last-of-type {
+            display: inline-block;
+            position: absolute;
+            left: 12rem;
+            font-family: "Roboto";
+            font-size: 1.1rem;
+            color: #CE93D8;
+        }
+    }
+
+    .header__arrow {
+        position: absolute;
+        left: 1rem;
+        top: 1.3rem;
+        font-family: "Roboto";
+        font-size: 4rem;
+        transition: 0.3s;
+    }
+
+    .header__menu {
+        display: flex;
+        justify-content: space-between;
+        width: 23rem;
+        position: absolute;
+        right: 1rem;
+        top: 3rem;
+
+        .header__menu-item {
+            position: relative;
+            display: inline-flex;
+            font-size: 1.8rem;
+            font-family: "Major Mono Display";
+            height: 2.5rem;
+
+            &:hover {
+                color: #4DB6AC;
+                border-bottom: 3px solid lighten(#3F51B5, 20%);
+                cursor: pointer;
+            }
+
+            &:last-of-type {
+                top: -1.2rem;
+                padding: 0;
+                border-radius: 100px;
+                width: 4rem;
+                height: 4rem;
+                transition: 0.1s;
+
+                &:hover {
+                background-color: #4DB6AC;
+                border: none;
+                transform: scale(1.2, 1.2);
+                cursor: pointer;
+                }
+            }
+
+            object {
+                position: absolute;
+                transform: translate(-50%, -50%);
+                top: 50%;
+                left: 50%;
+                width: 3rem;
+                height: 3rem;
+                fill: #CFD8DC;
+
+            }
+        }
+    }
+}
+
+footer{
+    color: #CFD8DC;
+    margin: 2rem 0;
+
+    .footer__hr {
+        width: 90vw;
+        border: 0.5px solid rgba(#CFD8DC, 0.5);
+        margin: 0 auto;
+    }
+
+    p{
+        color: #CFD8DC;
+        margin-top: 1rem;
+        text-align: center;
     }
 }
