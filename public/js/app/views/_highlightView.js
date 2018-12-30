@@ -4,36 +4,30 @@ import { elements } from "../elements";
 
 const highlightView = {
 
-    initialHighlight: function() {
+    highlightSelected: function() {
         const contentArr = elements.calendarContent();
 
         contentArr.forEach((item, index, arr) => {
-            if( parseInt(item.getAttribute("day")) === state.selectedDay
+            if  (parseInt(item.getAttribute("day")) === state.selectedDay
                 && parseInt(item.getAttribute("month")) === state.selectedMonth
                 && parseInt(item.getAttribute("year")) === state.selectedYear)
                 {
                 state.indexOfBox = parseInt(item.parentNode.getAttribute("index"));
+                state.selectedBox = contentArr[state.indexOfBox];
+                state.selectedBox.classList.add("highlight");
             }
-
         });
-
-        state.selectedBox = contentArr[state.indexOfBox];
-        state.selectedBox.classList.add("highlight");
     },
 
     updateHighlight: (event) => {
+        //remove highlight
+        state.selectedBox.classList.remove("highlight");
+        //get new index of selected box
         state.indexOfBox = parseInt(event.target.parentNode.getAttribute("index"));
-
-        try {
-            state.selectedBox.classList.remove("highlight");
-        }  catch(err) {
-            console.log("first box selected");
-        }
-
+        //add new highlight
         state.selectedBox = elements.calendarContent()[state.indexOfBox];
         state.selectedBox.classList.add("highlight");
     },
-
 };
 
 export { highlightView };

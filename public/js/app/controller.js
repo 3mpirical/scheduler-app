@@ -15,7 +15,7 @@ const CTRL = (function(MDL, VIEW, state, elements) {
         VIEW.printHeading();
         VIEW.printSelected();
         VIEW.printCalendarDays(state.headingMonth, state.headingYear);
-        VIEW.initialHighlight();
+        VIEW.highlightSelected();
     };
 
 const decrementCalendarMonth = () => {
@@ -25,11 +25,13 @@ const decrementCalendarMonth = () => {
     } else {
         state.headingMonth -=  1;
     }
+
     VIEW.clearHeading();
     VIEW.clearSelected();
     VIEW.clearCalendar();
     VIEW.printHeading();
     VIEW.printCalendarDays(state.headingMonth, state.headingYear);
+    VIEW.highlightSelected();
 };
 const incrementCalendarMonth = () => {
     if(state.headingMonth + 1 === 12) {
@@ -38,17 +40,19 @@ const incrementCalendarMonth = () => {
     } else {
         state.headingMonth +=  1;
     }
+
     VIEW.clearHeading();
     VIEW.clearSelected();
     VIEW.clearCalendar();
     VIEW.printHeading();
     VIEW.printCalendarDays(state.headingMonth, state.headingYear);
+    VIEW.highlightSelected();
 };
 
 const updateSelectedBox = (event) => {
-    state.selectedDay = event.target.getAttribute("day");
-    state.selectedMonth = event.target.getAttribute("month");
-    state.selectedYear = event.target.getAttribute("year");
+    state.selectedDay = parseInt(event.target.getAttribute("day"));
+    state.selectedMonth = parseInt(event.target.getAttribute("month"));
+    state.selectedYear = parseInt(event.target.getAttribute("year"));
     VIEW.updateHighlight(event);
     VIEW.clearSelected();
     VIEW.printSelected();
