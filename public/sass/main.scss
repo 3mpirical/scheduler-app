@@ -28,19 +28,15 @@ body {
 
 
 .calendar {
-    display: inline-block;
     position: relative;
-    top: 0rem;
-    left: 0rem;
     width: 100vw;
     height: 105vw;
-    padding: 2rem 1rem;
     background-color: darken(#37474F, 10%);
     color: #CFD8DC;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    //desktop only
+    // box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 
     .calendar__mobile-logo {
-        display: inline-block;
         position: absolute;
         width: 20rem;
         height: 10rem;
@@ -81,16 +77,17 @@ body {
         display: flex;
         justify-content: space-between;
         position: absolute;
-        top: 0;
+        top: 5.3%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         width: 56rem;
         height: 10%;
-        left: 50%;
-        transform: translatex(-50%);
+
 
         button {
             position: relative;
-            width: 10rem;
-            height: 95%;
+            width: 9.5rem;
+            height: 9.5rem;
             background-color: #3F51B5;
             color: #CFD8DC;
             border: none;
@@ -316,12 +313,6 @@ body {
         p {
             text-align: center;
         }
-
-
-        li {
-            font-size: 1.3rem;
-            font-family: "Roboto", sans-serif;
-        }
     }
 }
 
@@ -456,6 +447,7 @@ header{
 }
 
 footer{
+    display: none;
     color: #CFD8DC;
     margin: 2rem 0;
 
