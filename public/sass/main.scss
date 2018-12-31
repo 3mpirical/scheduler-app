@@ -33,7 +33,7 @@ body {
     top: 0rem;
     left: 0rem;
     width: 100vw;
-    height: 55vh;
+    height: 100vw;
     padding: 2rem 1rem;
     background-color: #37474F;
     color: #CFD8DC;
@@ -43,26 +43,31 @@ body {
 
     .calendar__heading-items {
         font-family: "Roboto", sans-serif;
-        font-size: 3rem;
+        font-size: 4rem;
         letter-spacing: 4px;
         position: absolute;
         top: 1%;
-        left: 3%;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .calendar__month-buttons {
+        display: flex;
+        justify-content: space-between;
         position: absolute;
-        top: 2%;
-        right: 4%;
+        top: 0.5%;
+        width: 50rem;
+        left: 50%;
+        transform: translateX(-50%);
 
         button {
             position: relative;
-            width: 2.5rem;
-            height: 2.5rem;
+            width: 6rem;
+            height: 6rem;
             background-color: #455A64;
             border-color: #CFD8DC;
             color: #CFD8DC;
-            font-size: 2rem;
+            font-size: 5rem;
             font-family: "Roboto", sans-serif;
             vertical-align: top;
             border-radius: 5px;
@@ -81,11 +86,11 @@ body {
         flex-direction: column;
         justify-content: space-evenly;
         position: absolute;
-        height: 90%;
-        width: 95%;
-        top: 52%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        height: 93%;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        // transform: translate(-50%, -50%);
         border-radius: 8px;
 
         &::before {
@@ -120,7 +125,7 @@ body {
                 position: relative;
                 height: 100%;
                 width: calc(100%/7.1);
-                font-size: 1.1rem;
+                font-size: 2.3vw;
                 font-family: sans-serif;
                 border-radius: 6px;
                 background-color: #3F51B5;
@@ -197,7 +202,7 @@ body {
 
 
                     .calendar__date {
-                        font-size: 1.3rem;
+                        font-size: 2.3vw;
 
                         position: absolute;
                         top: 12.5%;
