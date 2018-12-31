@@ -147,14 +147,23 @@ router.put("/api/events/:id", isValidDate ,(req, res) => {
 router.delete("/api/events/:id", (req, res) => {
     const _id = req.params.id;
 
-    Event.findByIdAndDelete(_id)
-        .then(() => {
-            res.status(200)
-                .json({
-                    isSuccessful: true,
-                    responseText: "data deleted",
-                    data: null,
-                });
+    Event.findByIdAndRemove(_id)
+        .then((eventData) => {
+            if(eventData) {
+                res.status(200)
+                    .json({
+                        isSuccessful: true,
+                        responseText: "data deleted",
+                        data: null,
+                    });
+            } else {
+                res.status(404)
+                    .json({
+                        isSuccessful: false,
+                        responseText: "data not found",
+                        data: null,
+                    });
+            }
         })
         .catch((err) => {
             res.status(400)
