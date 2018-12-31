@@ -55,22 +55,24 @@ body {
         display: flex;
         justify-content: space-between;
         position: absolute;
-        top: calc(7%/2);
+        top: 0;
         width: 50rem;
+        height: 7%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translatex(-50%);
 
         button {
             position: relative;
-            width: 6.5rem;
-            height: 6.5rem;
+            width: 7rem;
+            height: 100%;
             background-color: #3F51B5;
-            border-color: #CFD8DC;
             color: #CFD8DC;
+            border: none;
+            border-left: 1px solid #CFD8DC;
+            border-right: 1px solid #CFD8DC;
+            outline: 0;
             font-size: 7rem;
             font-family: "Roboto", sans-serif;
-            vertical-align: top;
-            border-radius: 5px;
             cursor: pointer;
         }
     }
