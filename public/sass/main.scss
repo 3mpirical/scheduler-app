@@ -73,6 +73,9 @@ body {
             font-size: 7rem;
             font-family: "Roboto", sans-serif;
             cursor: pointer;
+
+            //this prevents double-tap zoom.. and pretty much all other zooming for that object.
+            touch-action:none;
         }
     }
 
@@ -192,6 +195,8 @@ body {
                     height: 100%;
                     width: 100%;
                     border-radius: 8px;
+                    //this prevents double-tap zoom.. and pretty much all other zooming for that object.
+                    touch-action:none;
 
                     .calendar__date {
                         font-size: 2.3vw;
@@ -381,6 +386,8 @@ header{
                     width: 3rem;
                     height: 3rem;
                     fill: #CFD8DC;
+                    //this prevents double-tap zoom.. and pretty much all other zooming for that object.
+                    touch-action:none;
                 }
 
                 &:hover {

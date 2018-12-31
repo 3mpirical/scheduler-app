@@ -57,7 +57,8 @@ body {
       outline: 0;
       font-size: 7rem;
       font-family: "Roboto", sans-serif;
-      cursor: pointer; }
+      cursor: pointer;
+      touch-action: none; }
   .calendar .calendar__selected-items {
     position: absolute;
     bottom: 0.5%;
@@ -129,7 +130,8 @@ body {
         .calendar .calendar__dates-container .calendar__dates-row .calendar__box .calendar__box-content {
           height: 100%;
           width: 100%;
-          border-radius: 8px; }
+          border-radius: 8px;
+          touch-action: none; }
           .calendar .calendar__dates-container .calendar__dates-row .calendar__box .calendar__box-content .calendar__date {
             font-size: 2.3vw;
             position: absolute;
@@ -258,7 +260,8 @@ header {
           left: 50%;
           width: 3rem;
           height: 3rem;
-          fill: #CFD8DC; }
+          fill: #CFD8DC;
+          touch-action: none; }
         header .header__menu .header__menu-item:last-of-type:hover {
           background-color: #4DB6AC;
           border: none;
