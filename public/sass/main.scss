@@ -37,7 +37,6 @@ body {
     padding: 2rem 1rem;
     background-color: #37474F;
     color: #CFD8DC;
-    border-radius: 6px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 
 
@@ -92,8 +91,6 @@ body {
         width: 100%;
         bottom: 0;
         left: 0;
-        // transform: translate(-50%, -50%);
-        border-radius: 8px;
 
         &::before {
             content: " ";
@@ -101,13 +98,7 @@ body {
             height: 100%;
             width: 100%;
             position: absolute;
-            // top: 50%;
-            // left: 50%;
-            // transform: translate(-50%, -50%);
             background-color: #CFD8DC;
-            border-radius: 8px;
-
-
             }
 
         .calendar__days-header {
@@ -202,7 +193,6 @@ body {
                     width: 100%;
                     border-radius: 8px;
 
-
                     .calendar__date {
                         font-size: 2.3vw;
 
@@ -245,7 +235,6 @@ body {
     height: 40vh;
     background-color: #37474F;
     color: #CFD8DC;
-    border-radius: 6px;
 
     .event-pane__header {
         position: absolute;

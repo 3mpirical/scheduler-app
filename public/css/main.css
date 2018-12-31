@@ -27,7 +27,6 @@ body {
   padding: 2rem 1rem;
   background-color: #37474F;
   color: #CFD8DC;
-  border-radius: 6px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); }
   .calendar .calendar__heading-items {
     font-family: "Roboto", sans-serif;
@@ -71,16 +70,14 @@ body {
     height: 93%;
     width: 100%;
     bottom: 0;
-    left: 0;
-    border-radius: 8px; }
+    left: 0; }
     .calendar .calendar__dates-container::before {
       content: " ";
       display: block;
       height: 100%;
       width: 100%;
       position: absolute;
-      background-color: #CFD8DC;
-      border-radius: 8px; }
+      background-color: #CFD8DC; }
     .calendar .calendar__dates-container .calendar__days-header {
       display: flex;
       justify-content: space-evenly;
@@ -157,8 +154,7 @@ body {
   width: 100vw;
   height: 40vh;
   background-color: #37474F;
-  color: #CFD8DC;
-  border-radius: 6px; }
+  color: #CFD8DC; }
   .event-pane .event-pane__header {
     position: absolute;
     width: 75%;
