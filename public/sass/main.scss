@@ -33,7 +33,7 @@ body {
     top: 0rem;
     left: 0rem;
     width: 100vw;
-    height: 100vw;
+    height: 105vw;
     padding: 2rem 1rem;
     background-color: darken(#37474F, 10%);
     color: #CFD8DC;
@@ -42,33 +42,24 @@ body {
     .calendar__mobile-logo {
         display: inline-block;
         position: absolute;
-        width: 30rem;
+        width: 20rem;
         height: 10rem;
         top: 0;
         left: 0;
 
         h1 {
             position: absolute;
-            left: 5%;
+            top: 20%;
+            left: 17%;
             font-family: "Major Mono Display";
             font-size: 4.5rem;
             color: #4DB6AC;
-            cursor: pointer;
-            transition: 0.4s;
-
-            &:active{
-                transform: scaleX(0.6);
-
-                + p{
-                    transform: scaleX(1.5) translateX(3rem);
-                }
-            }
         }
 
         p {
             position: absolute;
-            top: 20%;
-            left: 0;
+            top: 40%;
+            left: 7%;
             font-family: "Roboto";
             font-size: 5rem;
             transition: 0.4s;
@@ -81,9 +72,9 @@ body {
         font-size: 4rem;
         letter-spacing: 4px;
         position: absolute;
-        top: 1%;
+        top: 5%;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translate(-50%, -50%);
     }
 
     .calendar__month-buttons {
@@ -91,20 +82,19 @@ body {
         justify-content: space-between;
         position: absolute;
         top: 0;
-        width: 50rem;
-        height: 7%;
+        width: 56rem;
+        height: 10%;
         left: 50%;
         transform: translatex(-50%);
 
         button {
             position: relative;
-            width: 7rem;
-            height: 100%;
+            width: 10rem;
+            height: 95%;
             background-color: #3F51B5;
             color: #CFD8DC;
             border: none;
-            border-left: 1px solid #CFD8DC;
-            border-right: 1px solid #CFD8DC;
+            border-radius: 100px;
             outline: 0;
             font-size: 7rem;
             font-family: "Roboto", sans-serif;
@@ -117,11 +107,11 @@ body {
 
     .calendar__mobile-menu-button {
         position: absolute;
-        top: 0.5%;
-        right: 0.5%;
+        top: 1.5%;
+        right: 2%;
         border-radius: 100px;
-        width: 5.7rem;
-        height: 5.7rem;
+        width: 7rem;
+        height: 7rem;
         transition: 0.1s;
 
         img {
@@ -129,8 +119,8 @@ body {
             transform: translate(-50%, -50%);
             top: 50%;
             left: 50%;
-            width: 5rem;
-            height: 5rem;
+            width: 6rem;
+            height: 6rem;
             //this prevents double-tap zoom.. and pretty much all other zooming for that object.
             touch-action:none;
         }
@@ -155,7 +145,7 @@ body {
         flex-direction: column;
         justify-content: space-evenly;
         position: absolute;
-        height: 93%;
+        height: 90%;
         width: 100%;
         bottom: 0;
         left: 0;
