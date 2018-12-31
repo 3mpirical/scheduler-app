@@ -6,15 +6,51 @@ const mongoose = require("mongoose");
 
 
 const eventSchema = new mongoose.Schema({
-    type: String,
-    name: String,
-    description: String,
+    type: {
+        type: String,
+        default: "Miscellaneous",
+        maxlength: 13,
+    },
+    name: {
+        type: String,
+        required: true,
+        maxlength: 30,
+        trim: true,
+    },
+    description: {
+        type: String,
+        default: "",
+        trim: true,
+        maxLength: 300,
+    },
     dateCreated: Date,
     dateExecuting: {
-        day: Number,
-        month: Number,
-        year: Number,
-        time: Number,
+        day: {
+            type: Number,
+            required: true,
+            max: 31,
+            min: 1,
+        },
+        month: {
+            type: Number,
+            required: true,
+            max: 11,
+            min: 0,
+        },
+        year: {
+            type: Number,
+            required: true,
+            max: 2099,
+            min:  new Date().getFullYear(),
+        },
+        time: {
+            type: Number,
+            required: true,
+            max: 2400,
+            min: 0,
+        },
+
+
     },
 });
 

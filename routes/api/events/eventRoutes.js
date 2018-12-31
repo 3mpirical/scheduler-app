@@ -2,12 +2,14 @@ const   express = require("express"),
         router = express.Router(),
         mongoose = require("mongoose");
 
-        Event = require("../../../models/eventModel");
+        Event = require("../../../models/eventModel"),
+        isValidDate = require("../middleware/isValidDate");
 
 
 // CREATE
-router.post("/api/events", (req, res) => {
+router.post("/api/events", isValidDate, (req, res) => {
     const newEvent = req.body;
+
 
     Event.create({
             type: newEvent.type,
@@ -106,11 +108,11 @@ router.get("/api/events/:id", (req, res) => {
         });
 });
 // UPDATE
-router.put("/api/events/:id", (req, res) => {
+router.put("/api/events/:id", isValidDate ,(req, res) => {
     const _id = req.params.id;
     const updatedEvent = req.body;
 
-    Event.findByIdAndUpdate(_id, { $set: updatedEvent }, {new: true})
+    Event.findByIdAndUpdate(_id, updatedEvent, {runValidators: true, new: true})
         .then((eventData) => {
             if(eventData) {
                 res.status(200)
@@ -139,7 +141,7 @@ router.put("/api/events/:id", (req, res) => {
 });
 
 // DESTROY
-router.delete("/api/events/:id/delete", (req, res) => {
+router.delete("/api/events/:id", (req, res) => {
     const _id = req.params.id;
 
     Event.findByIdAndDelete(_id)
