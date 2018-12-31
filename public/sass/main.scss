@@ -55,19 +55,19 @@ body {
         display: flex;
         justify-content: space-between;
         position: absolute;
-        top: 0.5%;
+        top: calc(7%/2);
         width: 50rem;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translate(-50%, -50%);
 
         button {
             position: relative;
-            width: 6rem;
-            height: 6rem;
-            background-color: #455A64;
+            width: 6.5rem;
+            height: 6.5rem;
+            background-color: #3F51B5;
             border-color: #CFD8DC;
             color: #CFD8DC;
-            font-size: 5rem;
+            font-size: 7rem;
             font-family: "Roboto", sans-serif;
             vertical-align: top;
             border-radius: 5px;
@@ -275,7 +275,7 @@ header{
         display: block;
         min-width: 430px;
         width: 100vw;
-        height: 5vh;
+        height: 4vh;
         background-color: rgba(0,0,0,0.3);
     }
 
