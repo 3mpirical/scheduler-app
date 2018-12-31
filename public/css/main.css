@@ -138,8 +138,12 @@ body {
             transform: translate(-50%, -50%); }
         .calendar .calendar__dates-container .calendar__dates-row .calendar__box .dark {
           background-color: #34444c; }
+          .calendar .calendar__dates-container .calendar__dates-row .calendar__box .dark:active {
+            background-color: #CE93D8; }
         .calendar .calendar__dates-container .calendar__dates-row .calendar__box .highlight {
           background-color: #4DB6AC; }
+        .calendar .calendar__dates-container .calendar__dates-row .calendar__box:active {
+          background-color: #CE93D8; }
 
 .event-pane {
   display: inline-block;
