@@ -10,7 +10,6 @@ const   express = require("express"),
 router.post("/api/events", isValidDate, (req, res) => {
     const newEvent = req.body;
 
-
     Event.create({
             type: newEvent.type,
             name: newEvent.name,
@@ -75,6 +74,7 @@ router.get("/api/events", (req, res) => {
         });
 });
 
+
 //SHOW
 router.get("/api/events/:id", (req, res) => {
     const _id = req.params.id;
@@ -107,6 +107,8 @@ router.get("/api/events/:id", (req, res) => {
             });
         });
 });
+
+
 // UPDATE
 router.put("/api/events/:id", isValidDate ,(req, res) => {
     const _id = req.params.id;
@@ -139,6 +141,7 @@ router.put("/api/events/:id", isValidDate ,(req, res) => {
                 });
         });
 });
+
 
 // DESTROY
 router.delete("/api/events/:id", (req, res) => {
