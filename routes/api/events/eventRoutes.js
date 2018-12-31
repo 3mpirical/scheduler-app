@@ -110,7 +110,7 @@ router.put("/api/events/:id", (req, res) => {
     const _id = req.params.id;
     const updatedEvent = req.body;
 
-    Event.findByIdAndUpdate(_id, updatedEvent, {new: true})
+    Event.findByIdAndUpdate(_id, { $set: updatedEvent }, {new: true})
         .then((eventData) => {
             if(eventData) {
                 res.status(200)
