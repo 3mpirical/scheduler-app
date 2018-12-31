@@ -22,8 +22,8 @@ body {
   position: relative;
   top: 0rem;
   left: 0rem;
-  width: 50rem;
-  height: 55rem;
+  width: 100vw;
+  height: 55vh;
   padding: 2rem 1rem;
   background-color: #37474F;
   color: #CFD8DC;
@@ -148,8 +148,8 @@ body {
   position: relative;
   top: 0rem;
   left: 0rem;
-  width: 50rem;
-  height: 55rem;
+  width: 100vw;
+  height: 40vh;
   background-color: #37474F;
   color: #CFD8DC;
   border-radius: 6px; }
@@ -175,8 +175,7 @@ header {
     display: block;
     min-width: 430px;
     width: 100vw;
-    height: 6.5rem;
-    margin-bottom: 0.5rem;
+    height: 5vh;
     background-color: rgba(0, 0, 0, 0.3); }
   header .header__logo {
     position: absolute;
