@@ -39,6 +39,42 @@ body {
     color: #CFD8DC;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 
+    .calendar__mobile-logo {
+        display: inline-block;
+        position: absolute;
+        width: 30rem;
+        height: 10rem;
+        top: 0;
+        left: 0;
+
+        h1 {
+            position: absolute;
+            left: 5%;
+            font-family: "Major Mono Display";
+            font-size: 4.5rem;
+            color: #4DB6AC;
+            cursor: pointer;
+            transition: 0.4s;
+
+            &:active{
+                transform: scaleX(0.6);
+
+                + p{
+                    transform: scaleX(1.5) translateX(3rem);
+                }
+            }
+        }
+
+        p {
+            position: absolute;
+            top: 20%;
+            left: 0;
+            font-family: "Roboto";
+            font-size: 5rem;
+            transition: 0.4s;
+        }
+
+    }
 
     .calendar__heading-items {
         font-family: "Roboto", sans-serif;
@@ -78,6 +114,35 @@ body {
             touch-action:none;
         }
     }
+
+    .calendar__mobile-menu-button {
+        position: absolute;
+        top: 0.5%;
+        right: 0.5%;
+        border-radius: 100px;
+        width: 5.7rem;
+        height: 5.7rem;
+        transition: 0.1s;
+
+        img {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            width: 5rem;
+            height: 5rem;
+            //this prevents double-tap zoom.. and pretty much all other zooming for that object.
+            touch-action:none;
+        }
+
+        &:hover {
+        background-color: #4DB6AC;
+        border: none;
+        transform: scale(1.2, 1.2);
+        cursor: pointer;
+        }
+    }
+
 
     .calendar__selected-items {
         position: absolute;
@@ -271,6 +336,7 @@ body {
 }
 
 header{
+    display: none;
     color: #CFD8DC;
     position: relative;
 
@@ -383,7 +449,6 @@ header{
                     left: 50%;
                     width: 3rem;
                     height: 3rem;
-                    fill: #CFD8DC;
                     //this prevents double-tap zoom.. and pretty much all other zooming for that object.
                     touch-action:none;
                 }
