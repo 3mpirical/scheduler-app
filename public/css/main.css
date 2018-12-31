@@ -130,8 +130,7 @@ body {
         .calendar .calendar__dates-container .calendar__dates-row .calendar__box .calendar__box-content {
           height: 100%;
           width: 100%;
-          border-radius: 8px;
-          touch-action: none; }
+          border-radius: 8px; }
           .calendar .calendar__dates-container .calendar__dates-row .calendar__box .calendar__box-content .calendar__date {
             font-size: 2.3vw;
             position: absolute;

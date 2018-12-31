@@ -195,8 +195,6 @@ body {
                     height: 100%;
                     width: 100%;
                     border-radius: 8px;
-                    //this prevents double-tap zoom.. and pretty much all other zooming for that object.
-                    touch-action:none;
 
                     .calendar__date {
                         font-size: 2.3vw;
