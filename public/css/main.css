@@ -172,14 +172,21 @@ body {
             top: 12.5%;
             left: 12.5%;
             transform: translate(-50%, -50%); }
+          .calendar .calendar__dates-container .calendar__dates-row .calendar__box .calendar__box-content .event {
+            position: relative;
+            top: 20%;
+            width: 100%;
+            height: 2rem;
+            text-align: center;
+            font-size: 1.8rem;
+            color: #CFD8DC;
+            background-color: #3F51B5;
+            overflow: hidden;
+            font-weight: bold; }
         .calendar .calendar__dates-container .calendar__dates-row .calendar__box .dark {
           background-color: #34444c; }
-          .calendar .calendar__dates-container .calendar__dates-row .calendar__box .dark:active {
-            background-color: #CE93D8; }
         .calendar .calendar__dates-container .calendar__dates-row .calendar__box .highlight {
           background-color: #4DB6AC; }
-        .calendar .calendar__dates-container .calendar__dates-row .calendar__box:active {
-          background-color: #CE93D8; }
 
 .event-pane {
   display: inline-block;
