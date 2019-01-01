@@ -17,6 +17,7 @@ const getMonthsFirstDay = (month, year) => {
 
 
 const getCalendarArray = (month, year) => {
+
     // get current months total days
     const currMonthDays = daysInMonth(month, year);
 
@@ -36,16 +37,25 @@ const getCalendarArray = (month, year) => {
         const node = document.createElement("div");
 
         if(month - 1 === -1) {
-            node.setAttribute("year", year - 1);
-            node.setAttribute("month", 11 );
+            node.classList.add(
+                `date-${i}-11-${year - 1}`,
+                "calendar__box-content",
+                "dark"
+            );
             node.setAttribute("day", i);
+            node.setAttribute("month", 11);
+            node.setAttribute("year", year-1);
         } else {
-            node.setAttribute("year", year);
-            node.setAttribute("month", month -1);
+            node.classList.add(
+                `date-${i}-${month-1}-${year}`,
+                "calendar__box-content",
+                "dark"
+            );
             node.setAttribute("day", i);
+            node.setAttribute("month", month-1);
+            node.setAttribute("year", year);
         }
 
-        node.classList.add("calendar__box-content", "dark");
         node.innerHTML =`<div class="calendar__date">${i}</div>`;
 
         datesArr.push(node);
@@ -54,11 +64,11 @@ const getCalendarArray = (month, year) => {
     for(let i = 1; i <= currMonthDays; i++ ) {
         const node = document.createElement("div");
 
-        node.setAttribute("year", year);
-        node.setAttribute("month", month);
+        node.classList.add(`date-${i}-${month}-${year}`,"calendar__box-content");
         node.setAttribute("day", i);
+        node.setAttribute("month", month);
+        node.setAttribute("year", year);
 
-        node.classList.add("calendar__box-content");
         node.innerHTML =`<div class="calendar__date">${i}</div>`;
 
         datesArr.push(node);
@@ -68,16 +78,25 @@ const getCalendarArray = (month, year) => {
         const node = document.createElement("div");
 
         if(month + 1 === 12) {
-            node.setAttribute("year", year + 1);
-            node.setAttribute("month", 0 );
+            node.classList.add(
+                `date-${i}-0-${year+1}`,
+                "calendar__box-content",
+                "dark"
+            );
             node.setAttribute("day", i);
+            node.setAttribute("month", 0);
+            node.setAttribute("year", year+1);
         } else {
-            node.setAttribute("year", year);
-            node.setAttribute("month", month + 1);
+            node.classList.add(
+                `date-${i}-${month+1}-${year}`,
+                "calendar__box-content",
+                "dark"
+            );
             node.setAttribute("day", i);
+            node.setAttribute("month", month+1);
+            node.setAttribute("year", year);
         }
 
-        node.classList.add("calendar__box-content", "dark");
         node.innerHTML =`<div class="calendar__date">${i}</div>`;
 
         datesArr.push(node);
@@ -103,13 +122,61 @@ const calendarView = {
     },
 
     printCalendarDays: function(month, year) {
-        const datesArr = getCalendarArray(month, year);
+        const datesArray = getCalendarArray(month, year);
 
-        elements.calendarBoxes
-            .forEach((item, index, arr) => {
-                item.appendChild(datesArr[index]);
+        elements.calendarBoxes.forEach((item, index, arr) => {
+                item.appendChild(datesArray[index]);
             });
 
+        MDL.Event.findByMonth( (month - 1 === -1) ? 11 : month - 1)
+            .then((eventData) => {
+                const prevMonthDays = daysInMonth(month - 1, year);
+                const prevMonthDaysToDisplay = getMonthsFirstDay(month, year) -1;
+                const prevMonthStart = prevMonthDays - prevMonthDaysToDisplay;
+
+                eventData.forEach((item, index, array) => {
+                    const {day, month, year} = item.dateExecuting;
+                    if(day >= prevMonthStart) {
+                        const contents = document.querySelector(`.date-${day}-${month}-${year}`);
+                        const eventNode = document.createElement("div");
+                        eventNode.classList.add("event");
+                        eventNode.textContent = item.name;
+                        contents.appendChild(eventNode);
+                    }
+                });
+
+                return MDL.Event.findByMonth(month);
+            })
+            .then((eventData) => {
+                console.log(JSON.stringify(eventData, null, 2));
+
+                eventData.forEach((item, index, array) => {
+                    const {day, month, year} = item.dateExecuting;
+                    const contents = document.querySelector(`.date-${day}-${month}-${year}`);
+                    const eventNode = document.createElement("div");
+                    eventNode.classList.add("event");
+                    eventNode.textContent = item.name;
+                    contents.appendChild(eventNode);
+                });
+                return MDL.Event.findByMonth((month + 1 === 12) ? 0 : month + 1);
+            })
+            .then((eventData) => {
+                const currMonthDays = daysInMonth(month, year);
+                const prevMonthDaysToDisplay = getMonthsFirstDay(month, year) -1;
+
+                eventData.forEach((item, index, array) => {
+                    const {day, month, year} = item.dateExecuting;
+                    if(day <= (41 - currMonthDays - prevMonthDaysToDisplay) ) {
+                        const contents = document.querySelector(`.date-${day}-${month}-${year}`);
+                        const eventNode = document.createElement("div");
+                        eventNode.classList.add("event");
+                        eventNode.textContent = item.name;
+                        contents.appendChild(eventNode);
+                    }
+                });
+
+            })
+            .catch((err) => console.log(JSON.stringify(err, null, 2)));
     },
 
 };

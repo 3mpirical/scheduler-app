@@ -5,27 +5,24 @@ import { elements } from "../elements";
 const highlightView = {
 
     highlightSelected: function() {
-        const contentArr = elements.calendarContent();
+        const {selectedDay, selectedMonth, selectedYear} = state;
 
-        contentArr.forEach((item, index, arr) => {
-            if  (parseInt(item.getAttribute("day")) === state.selectedDay
-                && parseInt(item.getAttribute("month")) === state.selectedMonth
-                && parseInt(item.getAttribute("year")) === state.selectedYear)
-                {
-                state.indexOfBox = parseInt(item.parentNode.getAttribute("index"));
-                state.selectedBox = contentArr[state.indexOfBox];
-                state.selectedBox.classList.add("highlight");
-            }
-        });
+        state.selectedBox = document.querySelector(`.date-${selectedDay}-${selectedMonth}-${selectedYear}`);
+
+        if(state.selectedBox) state.selectedBox.classList.add("highlight");
+
     },
 
     updateHighlight: (event) => {
-        //remove highlight
-        state.selectedBox.classList.remove("highlight");
-        //get new index of selected box
-        state.indexOfBox = parseInt(event.target.parentNode.getAttribute("index"));
+        const {selectedDay, selectedMonth, selectedYear} = state;
+
+        //remove highlight from previous box
+        if(state.selectedBox) state.selectedBox.classList.remove("highlight");
+
+        //set newly selected box
+        state.selectedBox = document.querySelector(`.date-${selectedDay}-${selectedMonth}-${selectedYear}`);
+
         //add new highlight
-        state.selectedBox = elements.calendarContent()[state.indexOfBox];
         state.selectedBox.classList.add("highlight");
     },
 };
