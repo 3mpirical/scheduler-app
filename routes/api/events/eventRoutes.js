@@ -10,18 +10,7 @@ const   express = require("express"),
 router.post("/api/events", isValidDate, (req, res) => {
     const newEvent = req.body;
 
-    Event.create({
-            type: newEvent.type,
-            name: newEvent.name,
-            description: newEvent.description,
-            dateCreated: Date.now(),
-            dateExecuting: {
-                day: newEvent.dateExecuting.day,
-                month: newEvent.dateExecuting.month,
-                year: newEvent.dateExecuting.year,
-                time: newEvent.dateExecuting.time,
-            }
-        })
+    Event.create({ ...newEvent, dateCreated: Date.now() })
         .then((eventData) => {
             console.log(`Data: ${eventData.name} \n^^^^^created`);
             res.status(200)
@@ -47,7 +36,7 @@ router.post("/api/events", isValidDate, (req, res) => {
 router.get("/api/events", (req, res) => {
     Event.find({})
         .then((eventData) => {
-            if(eventData) {
+            if(eventData.length > 0) {
                 console.log(`Event data found :\n${eventData}`);
                 res.status(200)
                     .json({
@@ -74,6 +63,38 @@ router.get("/api/events", (req, res) => {
         });
 });
 
+//INDEX OF MONTHS
+router.get("/api/events/:month", (req, res) => {
+    const month = req.params.month;
+
+    Event.find({"dateExecuting.month": month })
+        .then((eventData) => {
+            if(eventData.length > 0) {
+                res.status(200)
+                    .json({
+                        isSuccessful: true,
+                        responseText: "data found",
+                        data: eventData,
+                    });
+            } else {
+                res.status(204)
+                    .json({
+                        isSuccessful: true,
+                        responseText: "data not found",
+                        data: eventData,
+                    });
+            }
+        })
+        .catch((err) => {
+            res.status(400)
+                .json({
+                    isSuccessful: false,
+                    responseText: "bad request",
+                    data: err,
+                });
+        });
+});
+
 
 //SHOW
 router.get("/api/events/:id", (req, res) => {
@@ -82,7 +103,6 @@ router.get("/api/events/:id", (req, res) => {
     Event.findById({_id})
         .then((eventData) => {
             if(eventData) {
-                console.log(`Event data found :\n${eventData}`);
                 res.status(200)
                     .json({
                         isSuccessful: true,
@@ -90,7 +110,6 @@ router.get("/api/events/:id", (req, res) => {
                         data: eventData,
                     });
             } else {
-                console.log(`Event data not found :\n${eventData}`);
                 res.status(204)
                     .json({
                         isSuccessful: true,
