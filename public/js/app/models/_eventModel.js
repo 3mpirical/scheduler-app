@@ -27,6 +27,14 @@ class Event {
         });
     }
 
+    static findByMonth(month) {
+        return new Promise((resolve, reject) => {
+            axios.get(`/api/events/${month}`)
+                .then((eventData) => resolve(eventData.data.data))
+                .catch((err) => reject(err.response.data));
+        });
+    }
+
     static findById(_id) {
         return new Promise((resolve, reject) => {
             axios.get(`/api/events/${_id}`)
