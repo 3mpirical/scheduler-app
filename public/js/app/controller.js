@@ -14,7 +14,6 @@ const CTRL = (function(MDL, VIEW, state, elements) {
         state.selectedYear = state.headingYear;
         VIEW.printHeading();
         VIEW.printSelected();
-        // console.log(state.headingMonth, state.headingYear)
         VIEW.printCalendarDays(state.headingMonth, state.headingYear);
         VIEW.highlightSelected();
     };

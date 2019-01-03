@@ -247,6 +247,7 @@ body {
                     height: 100%;
                     width: 100%;
                     border-radius: 8px;
+                    text-align: center;
 
                     .calendar__date {
                         font-size: 2.3vw;
@@ -257,9 +258,10 @@ body {
                     }
 
                     .event {
+                        display: inline-block;
                         position: relative;
                         top: 20%;
-                        width: 100%;
+                        width: 98%;
                         height: 2rem;
                         text-align: center;
                         font-size: 1.8rem;
@@ -267,7 +269,12 @@ body {
                         background-color: #3F51B5;
                         overflow: hidden;
                         font-weight: bold;
+                        border-top: 1px solid rgba(#CFD8DC, 0.3);
+                        box-shadow: 1px 1px 3px rgba(0,0,0,0.4);
                         // border-radius: 8px;
+
+                        border-top-left-radius: 8px;
+                        border-top-right-radius: 8px;
                     }
                 }
 
