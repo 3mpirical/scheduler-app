@@ -1,0 +1,25 @@
+.event-pane {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    top: 0rem;
+    left: 0rem;
+    width: 100vw;
+    height: 40vh;
+    background-color: $color-primary-dark;
+    color:$color-off-white;
+
+    .event-pane__header {
+        position: absolute;
+        width: 75%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 3rem;
+        font-family: "Roboto", sans-serif;
+        background-color: rgba(0,0,0, 0.2);
+
+        p {
+            text-align: center;
+        }
+    }
+}

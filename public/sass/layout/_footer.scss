@@ -1,0 +1,17 @@
+footer{
+    display: none;
+    color: $color-off-white;
+    margin: 2rem 0;
+
+    .footer__hr {
+        width: 90vw;
+        border: 0.5px solid rgba($color-off-white, 0.5);
+        margin: 0 auto;
+    }
+
+    p{
+        color: $color-off-white;
+        margin-top: 1rem;
+        text-align: center;
+    }
+}

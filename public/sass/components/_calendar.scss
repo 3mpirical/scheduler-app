@@ -1,0 +1,274 @@
+.calendar {
+    position: relative;
+    width: 100vw;
+    height: 105vw;
+    background-color: darken($color-primary-dark, 10%);
+    color: $color-off-white;
+    //desktop only
+    // box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+
+    .calendar__mobile-logo {
+        position: absolute;
+        width: 20rem;
+        height: 10rem;
+        top: 0;
+        left: 0;
+
+        h1 {
+            position: absolute;
+            top: 20%;
+            left: 17%;
+            font-family: "Major Mono Display";
+            font-size: 4.5rem;
+            color: $color-green;
+        }
+
+        p {
+            position: absolute;
+            top: 40%;
+            left: 7%;
+            font-family: "Roboto";
+            font-size: 5rem;
+            transition: 0.4s;
+        }
+
+    }
+
+    .calendar__heading-items {
+        @include absolute-translated;
+        font-family: "Roboto", sans-serif;
+        font-size: 4rem;
+        letter-spacing: 4px;
+        top: 5%;
+        left: 50%;
+    }
+
+    .calendar__month-buttons {
+        @include absolute-translated;
+        left: 50%;
+        top: 5%;
+        display: flex;
+        justify-content: space-between;
+        width: 56rem;
+        height: 10%;
+
+
+        button {
+            position: relative;
+            transform: translateY(-50%);
+            top: 50%;
+            width: 9.5rem;
+            height: 9.5rem;
+            background-color: $color-indigo;
+            color: $color-off-white;
+            border: none;
+            border-radius: 100px;
+            outline: 0;
+            font-size: 7rem;
+            font-family: "Roboto", sans-serif;
+            cursor: pointer;
+
+            //this prevents double-tap zoom.. and pretty much all other zooming for that object.
+            touch-action:none;
+        }
+    }
+
+    .calendar__mobile-menu-button {
+        position: absolute;
+        top: 1.5%;
+        right: 2%;
+        border-radius: 100px;
+        width: 7rem;
+        height: 7rem;
+        transition: 0.1s;
+
+        img {
+            @include absolute-center;
+            width: 6rem;
+            height: 6rem;
+            //this prevents double-tap zoom.. and pretty much all other zooming for that object.
+            touch-action:none;
+        }
+
+        &:hover {
+        background-color: #4DB6AC;
+        border: none;
+        transform: scale(1.2, 1.2);
+        cursor: pointer;
+        }
+    }
+
+
+    .calendar__selected-items {
+        position: absolute;
+        bottom: 0.5%;
+        left: 3%;
+    };
+
+    .calendar__dates-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        position: absolute;
+        height: 90%;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+
+        &::before {
+            content: " ";
+            display: block;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            background-color: $color-off-white;
+        }
+
+
+    }
+}
+
+.calendar__days-header {
+    display: flex;
+    justify-content: space-evenly;
+    height: 4.9%;
+    width: 100%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+
+    .red {
+        color: $color-pink;
+    }
+
+    .day-of-week{
+        display: flex;
+        position: relative;
+        height: 100%;
+        width: calc(100%/7.1);
+        font-size: 2.3vw;
+        font-family: sans-serif;
+        border-radius: 6px;
+        background-color: $color-indigo;
+
+
+
+        &:first-of-type {
+            border-top-left-radius: 8px;
+        }
+        &:last-of-type {
+            border-top-right-radius: 8px;
+        }
+    }
+};
+
+
+.calendar__dates-row {
+    display: flex;
+    justify-content: space-evenly;
+    height: calc(95% / 6.1);
+    width: 100%;
+
+    .red {
+        color: $color-pink;
+    }
+
+    //first row
+    &:first-child {
+        .calendar__box {
+            &:first-of-type {
+                border-top-left-radius: 8px;
+            }
+            &:last-of-type{
+                border-top-right-radius: 8px;
+            }
+        }
+    }
+
+    //last row
+    &:last-child {
+        .calendar__box {
+            &:first-of-type {
+                border-bottom-left-radius: 8px;
+
+                .calendar__box-content {
+                    border-bottom-left-radius: 8px;
+                }
+            }
+
+            &:last-of-type {
+                border-bottom-right-radius: 8px;
+
+                .calendar__box-content {
+                    border-bottom-right-radius: 8px;
+                }
+            }
+        }
+    }
+
+
+    //boxes themselves
+    .calendar__box {
+        position: relative;
+        display: inline-flex;
+        height: 100%;
+        width: calc(100%/7.1);
+        background-color: $color-primary;
+        border-radius: 8px;
+
+        .calendar__box-content {
+            height: 100%;
+            width: 100%;
+            border-radius: 8px;
+            text-align: center;
+
+            .calendar__date {
+                font-size: 2.3vw;
+                position: absolute;
+                top: 12.5%;
+                left: 12.5%;
+                transform: translate(-50%, -50%);
+            }
+
+            .event {
+                display: inline-block;
+                position: relative;
+                top: 20%;
+                width: 98%;
+                height: 2rem;
+                text-align: center;
+                font-size: 1.8rem;
+                color: $color-off-white;
+                background-color: $color-indigo;
+                overflow: hidden;
+                font-weight: bold;
+                border-top: 1px solid rgba($color-off-white, 0.3);
+                box-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+                // border-radius: 8px;
+
+                border-top-left-radius: 8px;
+                border-top-right-radius: 8px;
+            }
+        }
+
+        .dark {
+            background-color: $color-primary-dark;
+
+            // ENABLE FOR DESKTOP USE
+            // &:hover {
+            //     background-color: $color-pink;
+            // }
+
+        }
+
+        .highlight {
+            background-color: $color-green;
+        }
+
+        // ENABLE FOR DESKTOP USE
+        // &:hover {
+        //     background-color: $color-pink;
+        // }
+
+    }
+
+}

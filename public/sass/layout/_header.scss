@@ -1,0 +1,129 @@
+header{
+    display: none;
+    color: $color-off-white;
+    position: relative;
+
+    &::before {
+        content: " ";
+        display: block;
+        min-width: 430px;
+        width: 100vw;
+        height: 4vh;
+        background-color: rgba(0,0,0,0.3);
+    }
+
+    .header__logo {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        font-family: "Major Mono Display";
+        letter-spacing: 3px;
+        color: $color-green;
+        z-index: 1;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover{
+            transform: scaleX(0.9) translateX(-1rem);
+
+            + .header__arrow {
+                transform: scaleX(1.1) translateX(1rem);
+            }
+        }
+    }
+
+    .header__slogan {
+        position: absolute;
+        left: 1.3rem;
+        top: 4.4rem;
+        width: 30rem;
+        height: 4rem;
+
+        p:first-of-type {
+            display: inline-block;
+            position: absolute;
+            font-family: "Roboto";
+            font-size: 1.1rem;
+            color: $color-green;
+        }
+
+        p:nth-of-type(2) {
+            display: inline-block;
+            position: absolute;
+            left: 6.4rem;
+            font-family: "Roboto";
+            font-size: 1.1rem;
+            color: lighten($color-indigo, 10%);
+        }
+
+        p:last-of-type {
+            display: inline-block;
+            position: absolute;
+            left: 12rem;
+            font-family: "Roboto";
+            font-size: 1.1rem;
+            color: $color-pink;
+        }
+    }
+
+    .header__arrow {
+        position: absolute;
+        left: 1rem;
+        top: 1.3rem;
+        font-family: "Roboto";
+        font-size: 4rem;
+        transition: 0.3s;
+    }
+
+    .header__menu {
+        display: flex;
+        justify-content: space-between;
+        width: 23rem;
+        position: absolute;
+        top: 70%;
+        right: 1%;
+        transform: translateY(-50%);
+
+        .header__menu-item {
+            position: relative;
+            display: inline-flex;
+            font-size: 1.5rem;
+            font-family: "Major Mono Display";
+            height: 2.5rem;
+
+            &:hover {
+                color: $color-green;
+                border-bottom: 3px solid lighten($color-indigo, 20%);
+                cursor: pointer;
+            }
+
+            &:last-of-type {
+                top: -1.2rem;
+                padding: 0;
+                border-radius: 100px;
+                width: 4rem;
+                height: 4rem;
+                transition: 0.1s;
+
+                img {
+                    position: absolute;
+                    transform: translate(-50%, -50%);
+                    top: 50%;
+                    left: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                    //this prevents double-tap zoom.. and pretty much all other zooming for that object.
+                    touch-action:none;
+                }
+
+                &:hover {
+                background-color: $color-green;
+                border: none;
+                transform: scale(1.2, 1.2);
+                cursor: pointer;
+                }
+
+            }
+        }
+    }
+}
