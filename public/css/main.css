@@ -13,6 +13,12 @@ body {
   box-sizing: border-box;
   background-color: #212121; }
 
+.app-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh; }
+
 .u-absolute-center {
   position: absolute;
   top: 50%;
@@ -201,13 +207,10 @@ body {
       background-color: #4DB6AC; }
 
 .event-pane {
-  display: inline-block;
-  vertical-align: top;
+  flex: auto;
+  overflow: scroll;
   position: relative;
-  top: 0rem;
-  left: 0rem;
   width: 100vw;
-  height: 40vh;
   background-color: #37474F;
   color: #CFD8DC; }
   .event-pane .event-pane__header {
