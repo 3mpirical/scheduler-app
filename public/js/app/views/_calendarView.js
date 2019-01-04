@@ -2,19 +2,10 @@ import { MDL } from "../models/model";
 import { state } from "../state";
 import { elements } from "../elements";
 import { baseView } from "./_baseView";
+import { eventView } from "./_eventView";
 
-const monthArr = baseView.monthArr;
-
-// local functions ==========
-// Index starts at 0 so.... January === 0
-const daysInMonth = (month, year) => {
-    return new Date(year, month + 1 , 0).getDate();
-};
-
-const getMonthsFirstDay = (month, year) => {
-    return new Date(year, month, 1).getDay();
-};
-
+const { monthArr, daysInMonth, getMonthsFirstDay } = baseView;
+const { getEventsAndAppend } = eventView;
 
 const getCalendarArray = (month, year) => {
 
@@ -55,7 +46,6 @@ const getCalendarArray = (month, year) => {
             node.setAttribute("month", month-1);
             node.setAttribute("year", year);
         }
-
         node.innerHTML =`<div class="calendar__date">${i}</div>`;
 
         datesArr.push(node);
@@ -113,6 +103,8 @@ const clearCalendarContent = () => {
     });
 };
 
+// put this and event-appending promises into their own _eventView File.
+
 
 // exported functions ==========
 const calendarView = {
@@ -128,55 +120,11 @@ const calendarView = {
                 item.appendChild(datesArray[index]);
             });
 
-        MDL.Event.findByMonth( (month - 1 === -1) ? 11 : month - 1)
-            .then((eventData) => {
-                const prevMonthDays = daysInMonth(month - 1, year);
-                const prevMonthDaysToDisplay = getMonthsFirstDay(month, year) -1;
-                const prevMonthStart = prevMonthDays - prevMonthDaysToDisplay;
 
-                eventData.forEach((item, index, array) => {
-                    const {day, month, year} = item.dateExecuting;
-                    if(day >= prevMonthStart) {
-                        const contents = document.querySelector(`.date-${day}-${month}-${year}`);
-                        const eventNode = document.createElement("div");
-                        eventNode.classList.add("event");
-                        eventNode.textContent = item.name;
-                        contents.appendChild(eventNode);
-                    }
-                });
+    // refactor into three different functions and use promise.all to run concurrently
+        getEventsAndAppend(month, year)
+        .catch((err) => console.log(JSON.stringify(err, null, 2)));
 
-                return MDL.Event.findByMonth(month);
-            })
-            .then((eventData) => {
-                console.log(JSON.stringify(eventData, null, 2));
-
-                eventData.forEach((item, index, array) => {
-                    const {day, month, year} = item.dateExecuting;
-                    const contents = document.querySelector(`.date-${day}-${month}-${year}`);
-                    const eventNode = document.createElement("div");
-                    eventNode.classList.add("event");
-                    eventNode.textContent = item.name;
-                    contents.appendChild(eventNode);
-                });
-                return MDL.Event.findByMonth((month + 1 === 12) ? 0 : month + 1);
-            })
-            .then((eventData) => {
-                const currMonthDays = daysInMonth(month, year);
-                const prevMonthDaysToDisplay = getMonthsFirstDay(month, year) -1;
-
-                eventData.forEach((item, index, array) => {
-                    const {day, month, year} = item.dateExecuting;
-                    if(day <= (41 - currMonthDays - prevMonthDaysToDisplay) ) {
-                        const contents = document.querySelector(`.date-${day}-${month}-${year}`);
-                        const eventNode = document.createElement("div");
-                        eventNode.classList.add("event");
-                        eventNode.textContent = item.name;
-                        contents.appendChild(eventNode);
-                    }
-                });
-
-            })
-            .catch((err) => console.log(JSON.stringify(err, null, 2)));
     },
 
 };
