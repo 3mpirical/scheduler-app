@@ -9,7 +9,7 @@ const   express      = require("express"),
 
 // SETUP
 const PORT = process.env.PORT || 3005;
-const MONGODB_URI = "mongodb://127.0.0.1:27017/projectify"; //process.env.MONGODB_URI ||
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/projectify"; //process.env.MONGODB_URI ||
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
     .then(() => console.log("MongoDB Connected Successfully"))
     .catch((err) => console.log(`Failed To Connect To MongoDB: \n${err}`));
