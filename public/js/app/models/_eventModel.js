@@ -27,9 +27,9 @@ class Event {
         });
     }
 
-    static findByMonth(month) {
+    static findByMonthAndYear(month, year) {
         return new Promise((resolve, reject) => {
-            axios.get(`/api/events/${month}`)
+            axios.get(`/api/events/${month}/${year}`)
             .then((eventData) => resolve(eventData.data.data))
             .catch((err) => reject(err.response.data));
         });

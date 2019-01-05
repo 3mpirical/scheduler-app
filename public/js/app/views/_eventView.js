@@ -16,18 +16,24 @@ const appendEvent = (event) => {
 
 const appendPrevMonthEvents = (currMonth, year) => {
     return new Promise((resolve, reject) => {
-        MDL.Event.findByMonth( (currMonth - 1 === -1) ? 11 : currMonth - 1)
+        MDL.Event.findByMonthAndYear(
+            (currMonth - 1 === -1) ? 11 : currMonth - 1,
+            (currMonth - 1 === -1) ? year - 1 : year)
         .then((eventData) => {
-            const prevMonthDays = daysInMonth(currMonth - 1, year);
-            const prevMonthDaysToDisplay = getMonthsFirstDay(currMonth, year) -1;
-            const prevMonthStart = prevMonthDays - prevMonthDaysToDisplay;
+            if(Array.isArray(eventData)) {
+                // console.log("here");
+                // console.log(eventData);
+                const prevMonthDays = daysInMonth(currMonth - 1, year);
+                const prevMonthDaysToDisplay = getMonthsFirstDay(currMonth, year) -1;
+                const prevMonthStart = prevMonthDays - prevMonthDaysToDisplay;
 
-            eventData.forEach((item, index, array) => {
-                const day = item.dateExecuting.day;
-                if(day >= prevMonthStart) {
-                    appendEvent(item);
-                }
-            });
+                eventData.forEach((item, index, array) => {
+                    const day = item.dateExecuting.day;
+                    if(day >= prevMonthStart) {
+                        appendEvent(item);
+                    }
+                });
+            }
         })
         .catch((err) => reject(err));
     });
@@ -36,11 +42,15 @@ const appendPrevMonthEvents = (currMonth, year) => {
 
 const appendCurrMonthEvents = (currMonth, year) => {
     return new Promise((resolve, reject) => {
-        MDL.Event.findByMonth(currMonth)
+        MDL.Event.findByMonthAndYear(currMonth, year)
         .then((eventData) => {
-            eventData.forEach((item, index, array) => {
-                appendEvent(item);
-            });
+            if(Array.isArray(eventData)) {
+                // console.log("here");
+                // console.log(eventData);
+                eventData.forEach((item, index, array) => {
+                    appendEvent(item);
+                });
+            }
         })
         .catch((err) => reject(err));
     });
@@ -49,17 +59,23 @@ const appendCurrMonthEvents = (currMonth, year) => {
 
 const appendNextMonthEvents = (currMonth, year) => {
     return new Promise((resolve, reject) => {
-        MDL.Event.findByMonth((currMonth + 1 === 12) ? 0 : currMonth + 1)
+        MDL.Event.findByMonthAndYear(
+            (currMonth + 1 === 12) ? 0 : currMonth + 1,
+            (currMonth + 1 === 12) ? year + 1 : year)
         .then((eventData) => {
-            const currMonthDays = daysInMonth(currMonth, year);
-            const prevMonthDaysToDisplay = getMonthsFirstDay(currMonth, year) -1;
+            if(Array.isArray(eventData)) {
+                // console.log("here");
+                // console.log(eventData);
+                const currMonthDays = daysInMonth(currMonth, year);
+                const prevMonthDaysToDisplay = getMonthsFirstDay(currMonth, year) -1;
 
-            eventData.forEach((item, index, array) => {
-                const day = item.dateExecuting.day;
-                if(day <= (41 - currMonthDays - prevMonthDaysToDisplay) ) {
-                    appendEvent(item);
-                }
-            });
+                eventData.forEach((item, index, array) => {
+                    const day = item.dateExecuting.day;
+                    if(day <= (41 - currMonthDays - prevMonthDaysToDisplay) ) {
+                        appendEvent(item);
+                    }
+                });
+            }
         })
         .catch((err) => reject(err));
     });
