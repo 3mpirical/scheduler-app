@@ -75,6 +75,8 @@ const updateSelectedBox = (event) => {
 
 CTRL.initializeCalendar();
 
+
+
 //decrement calendar month
 elements.prevMonthButt.addEventListener("click", (event) => {
     CTRL.decrementCalendarMonth();
@@ -84,6 +86,7 @@ const decrementSwipe = new Hammer(elements.calendarContainer);
 decrementSwipe.on("swiperight", (event) => {
     CTRL.decrementCalendarMonth();
 });
+
 
 
 //increment calendar month
@@ -96,9 +99,17 @@ incrementSwipe.on("swipeleft", (event) => {
     CTRL.incrementCalendarMonth();
 });
 
+
+
 //update selected box on content click/touch
 elements.calendarContainer.addEventListener("click", (event) => {
     if(event.target.matches(".calendar__box-content")) {
         CTRL.updateSelectedBox(event);
     }
+});
+
+
+elements.newEventForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    console.log(event);
 });
