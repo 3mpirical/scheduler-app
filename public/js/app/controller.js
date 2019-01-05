@@ -80,7 +80,7 @@ elements.prevMonthButt.addEventListener("click", (event) => {
     CTRL.decrementCalendarMonth();
 });
 
-const decrementSwipe = new Hammer(elements.prevMonthButt);
+const decrementSwipe = new Hammer(elements.calendarContainer);
 decrementSwipe.on("swiperight", (event) => {
     CTRL.decrementCalendarMonth();
 });
