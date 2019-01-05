@@ -12,7 +12,16 @@ const elements = {
             return [...document.querySelectorAll(".calendar__box-content")];
     },
 
-    newEventForm: document.querySelector(".event-form"),
+    newForm: {
+        container: document.querySelector(".event-form"),
+        type: document.querySelector(".event-form__type"),
+        name: document.querySelector(".event-form__name"),
+        description: document.querySelector(".event-form__description"),
+        day: document.querySelector(".event-form__day"),
+        month: document.querySelector(".event-form__month"),
+        year: document.querySelector(".event-form__year"),
+        time: document.querySelector(".event-form__time"),
+    },
 
 };
 
