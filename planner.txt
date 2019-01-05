@@ -39,10 +39,45 @@ PLANNED_IMPLEMENTATIONS____
     So the heading becomes inaccurate compared to the selected box.
 /////complete
 
-4) Create partials for the header and the footer. It won't be a full
+//4) Create partials for the header and the footer. It won't be a full
     application yet, but it should look like a legit website to some extent.
+/////complete
+///----> redone to optimize for mobile use/layout
 
-5) Build in user authentication: routes, pages for login, appropriate
+//5) Plan the schema and model for events.
+/////complete
+
+//6) Display Events on calendar.
+/////complete
+
+//7) Refactor code base, particularly calendar events for JS,
+    and modularize all scss.
+/////complete
+
+//8) Remove zoom-in on toughing neat buttons
+/////complete
+
+//9) Make the Event Pane fill the remaining screen space, regardless
+    of the size of that space. (Flexbox)
+//complete
+
+//10) Deploy to heroku with Mlab added.
+/////complete
+
+10) Hard code the "New Event," pane into hbs, and make it functional.
+
+11) Take hard coded event Pane and turn it into JS to be appended to the DOM via view functions.
+
+12) Make the sidebar which will allow us to toggle the size of the event pane (do this in javascript first with classes), and which gives us the button to navigate to the New Event pane.
+
+12) Work on the indexOfDailyEvents Event Pane in Javascript. This pane should be on the screen when we select a new day (or on the screen when the app loads, consider how the current day is our initial selected day);
+
+
+?) Add listeners to increment/decrement calendar when swiped left or right.
+
+?) Modify Schema for color property, and display on calendar/Event Pane with a color-class.
+
+?) Build in user authentication: routes, pages for login, appropriate
     hbs conditionals to display proper screens.
 
-6) Plan the schema and model for events.
+?) Make the application a PWA, so that it can fill the entire screen size without browser url issues. Don't worry about caching and webworkers just yet.
