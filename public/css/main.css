@@ -83,6 +83,8 @@ body {
       font-family: "Roboto", sans-serif;
       cursor: pointer;
       touch-action: none; }
+      .calendar .calendar__month-buttons button :active {
+        color: #4DB6AC; }
   .calendar .calendar__mobile-menu-button {
     position: absolute;
     top: 1.5%;
@@ -216,13 +218,88 @@ body {
   .event-pane .event-pane__header {
     position: absolute;
     width: 75%;
+    height: 100%;
     left: 50%;
     transform: translateX(-50%);
     font-size: 3rem;
     font-family: "Roboto", sans-serif;
     background-color: rgba(0, 0, 0, 0.2); }
-    .event-pane .event-pane__header p {
+    .event-pane .event-pane__header h2 {
       text-align: center; }
+
+.event-form {
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  height: 40rem; }
+  .event-form .event-form__labels {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 20%; }
+    .event-form .event-form__labels label {
+      height: 3rem;
+      text-align: right; }
+    .event-form .event-form__labels label[for="event-description"] {
+      height: 10rem; }
+  .event-form .event-form__inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 60%;
+    border-radius: 6px;
+    font-size: 2.5rem; }
+    .event-form .event-form__inputs .event-form__type {
+      width: 100%;
+      height: 3rem;
+      background-color: #CFD8DC;
+      border-radius: inherit;
+      text-align-last: center;
+      font-size: inherit; }
+    .event-form .event-form__inputs .event-form__name {
+      width: 100%;
+      height: 3rem;
+      background-color: #CFD8DC;
+      border-radius: inherit;
+      font-size: inherit; }
+    .event-form .event-form__inputs .event-form__description {
+      width: 100%;
+      height: 10rem;
+      background-color: #CFD8DC;
+      border-radius: inherit;
+      font-size: inherit; }
+    .event-form .event-form__inputs .event-form__date {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      height: 3rem;
+      border-radius: inherit;
+      font-size: inherit; }
+      .event-form .event-form__inputs .event-form__date input {
+        background-color: #CFD8DC;
+        height: 3rem;
+        width: 23%;
+        text-align: center;
+        border-radius: inherit; }
+  .event-form button {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    position: relative;
+    height: 10rem;
+    width: 10rem;
+    top: 110%;
+    right: 35%;
+    color: #CFD8DC;
+    background-color: #455A64;
+    border: 2px solid #CFD8DC;
+    border-radius: 100px;
+    font-size: 2.5rem;
+    outline: none;
+    touch-action: none;
+    cursor: pointer; }
+    .event-form button :active {
+      color: #4DB6AC;
+      border-color: #4DB6AC; }
 
 header {
   display: none;

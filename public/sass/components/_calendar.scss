@@ -70,6 +70,10 @@
 
             //this prevents double-tap zoom.. and pretty much all other zooming for that object.
             touch-action:none;
+
+            :active {
+                color: $color-green;
+            }
         }
     }
 

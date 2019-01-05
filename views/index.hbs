@@ -95,7 +95,40 @@
 
         <div class="event-pane">
             <div class="event-pane__header">
-                <p>Index Of Events</p>
+                <h2>New Event</h2>
+                <form class="event-form">
+
+                    <div class="event-form__labels">
+                        <label for="event-type">Type</label>
+                        <label for="event-name">* Name</label>
+                        <label for="event-description">Description</label>
+                        <label for="event-date">* Date</label>
+                    </div>
+                    <div class="event-form__inputs">
+                        <select class="event-form__type" id="event-type" name="type">
+                            <option value="Miscellaneous">Miscellaneous</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Business">Business</option>
+                            <option value="Holiday">Holiday</option>
+                        </select>
+
+                        <input class="event-form__name" id="event-name" type="text" name="name" required>
+
+
+                        <textarea class="event-form__description" id="event-description" name="description" rows="8" cols="80"></textarea>
+
+                        <div class="event-form__date" id="event-date">
+                            <input class="event-form__month" type="number" name="month" min="1" max="12" step="1" placeholder="month 1-12" required>
+                            <input class="event-form__day" type="number" name="day" min="1" max="31" step="1" placeholder="day 1-31" required>
+                            <input class="event-form__year" type="number" name="year" min="2018" max="2099" step="1" placeholder="year 2018-2099" required>
+                            <input class="event-form__time" type="number" name="time" min="0" max="2359" step="15" placeholder="time 0-2359" required>
+                        </div>
+
+                    </div>
+
+
+                    <button type="submit">Create</button>
+                </form>
             </div>
         </div>
     </div>
