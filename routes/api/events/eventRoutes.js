@@ -64,35 +64,39 @@ router.get("/api/events", (req, res) => {
 });
 
 //INDEX OF MONTHS
-router.get("/api/events/:month", (req, res) => {
+router.get("/api/events/:month/:year", (req, res) => {
     const month = req.params.month;
+    const year  = req.params.year;
 
-    Event.find({"dateExecuting.month": month })
-        .then((eventData) => {
-            if(eventData.length > 0) {
-                res.status(200)
-                    .json({
-                        isSuccessful: true,
-                        responseText: "data found",
-                        data: eventData,
-                    });
-            } else {
-                res.status(204)
-                    .json({
-                        isSuccessful: true,
-                        responseText: "data not found",
-                        data: eventData,
-                    });
-            }
-        })
-        .catch((err) => {
-            res.status(400)
+    Event.find({
+        "dateExecuting.month": month,
+        "dateExecuting.year": year
+    })
+    .then((eventData) => {
+        if(eventData.length > 0) {
+            res.status(200)
                 .json({
-                    isSuccessful: false,
-                    responseText: "bad request",
-                    data: err,
+                    isSuccessful: true,
+                    responseText: "data found",
+                    data: eventData,
                 });
-        });
+        } else {
+            res.status(204)
+                .json({
+                    isSuccessful: true,
+                    responseText: "data not found",
+                    data: eventData,
+                });
+        }
+    })
+    .catch((err) => {
+        res.status(400)
+            .json({
+                isSuccessful: false,
+                responseText: "bad request",
+                data: err,
+            });
+    });
 });
 
 
