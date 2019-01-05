@@ -91,6 +91,12 @@ elements.nextMonthButt.addEventListener("click", (event) => {
     CTRL.incrementCalendarMonth();
 });
 
+const incrementSwipe = new Hammer(elements.calendarContainer);
+incrementSwipe.on("swipeleft", (event) => {
+    CTRL.incrementCalendarMonth();
+});
+
+//update selected box on content click/touch
 elements.calendarContainer.addEventListener("click", (event) => {
     if(event.target.matches(".calendar__box-content")) {
         CTRL.updateSelectedBox(event);
