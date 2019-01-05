@@ -11,6 +11,9 @@ const elements = {
     calendarContent: () => {
             return [...document.querySelectorAll(".calendar__box-content")];
     },
+
+    newEventForm: document.querySelector(".event-form"),
+
 };
 
 export { elements };
