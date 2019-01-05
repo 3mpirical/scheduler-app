@@ -95,6 +95,7 @@ const eventView = {
             .catch((err) => reject(err));
         });
     },
+
 };
 
 

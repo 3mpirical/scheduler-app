@@ -60,12 +60,35 @@ const updateSelectedBox = (event) => {
     VIEW.printSelected();
 };
 
+const createEventAndReset = (event) => {
+    const {type, name, description, day, month, year, time} = elements.newForm;
+    console.log(type);
+    
+    MDL.Event.save({
+        type: type.value,
+        name: name.value,
+        description: description.value,
+        dateExecuting: {
+            day: day.value,
+            month: month.value - 1,
+            year: year.value,
+            time: time.value,
+        },
+    })
+    .then((eventData) => {
+        VIEW.clearCalendar();
+        VIEW.printCalendarDays(state.headingMonth, state.headingYear);
+        VIEW.highlightSelected();
+    })
+    .catch((err) => console.log(err));
+};
 
     return {
         initializeCalendar,
         decrementCalendarMonth,
         incrementCalendarMonth,
         updateSelectedBox,
+        createEventAndReset,
     };
 } (MDL, VIEW, state, elements) );
 
@@ -109,7 +132,8 @@ elements.calendarContainer.addEventListener("click", (event) => {
 });
 
 
-elements.newEventForm.addEventListener("submit", (event) => {
+elements.newForm.container.addEventListener("submit", (event) => {
     event.preventDefault();
-    console.log(event);
+    console.log(`Event: \n${event}`);
+    CTRL.createEventAndReset(event);
 });
