@@ -46,7 +46,7 @@ const eventSchema = new mongoose.Schema({
         time: {
             type: Number,
             required: true,
-            max: 2400,
+            max: 2359,
             min: 0,
         },
 
