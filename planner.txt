@@ -1,8 +1,8 @@
-===========================
-    Planner File
-===========================
+==========================
+****** PLANNER FILE ******
+==========================
 
-MAIN_FEATURES______________
+MAIN_FEATURES_______________________________________________________________________
 * To have a calendar searchable by month in which events can be recorded.
 * To create events on a given day, and allow them to be dragged to other dates.
 * To have a weekly view vs a monthly calendar option.
@@ -14,14 +14,18 @@ MAIN_FEATURES______________
 
 ***** A simple and intuitive user experience is top priority; more !=== better *****
 
-CONSIDERED_FEATURES________
+
+
+CONSIDERED_FEATURES_________________________________________________________________
 * Decide if you want this to be a general planner, or specific to some domain
     ^(think planning projects, like planning books, or project management)
 
 * On project management, consider creating a timeline which you can enter dates and have them be populated to your calendar. The project timeline itself will be the main source for management. Is it easier interface for planning than manually entering into the calendar..?
     ^If we wanted to go this route, then it may be worthwhile to create a project application where we create the timeline and enter project details via files and directory.
 
-PLANNED_IMPLEMENTATIONS____
+
+
+PLANNED_IMPLEMENTATIONS_____________________________________________________________
 //  1) Redo user interface for calendar.
     Make the 42 squares hard coded, then select as nodeList, then append date information to that list as needed.
     *this will allow you to customize the interface better and index the square numbers on the calendar rather than referencing them only by their dates.
@@ -54,7 +58,7 @@ PLANNED_IMPLEMENTATIONS____
     and modularize all scss.
 /////complete
 
-//8) Remove zoom-in on toughing neat buttons
+//8) Remove zoom-in on increment/decrement buttons
 /////complete
 
 //9) Make the Event Pane fill the remaining screen space, regardless
@@ -64,16 +68,26 @@ PLANNED_IMPLEMENTATIONS____
 //10) Deploy to heroku with Mlab added.
 /////complete
 
-10) Hard code the "New Event," pane into hbs, and make it functional.
+//?) Add listeners to increment/decrement calendar when swiped left or right.
+/////complete
 
-11) Take hard coded event Pane and turn it into JS to be appended to the DOM via view functions.
+//11) Hard code the "New Event," pane into hbs, and make it functional.
+/////complete
 
-12) Make the sidebar which will allow us to toggle the size of the event pane (do this in javascript first with classes), and which gives us the button to navigate to the New Event pane.
+----------------------------------------------------------------------------------
+**************| for now, just create the button which toggles, and when we create
+**************| the view which gives us the "index of daily events," we will add
+**************| the extra features to make sure the user won't enter information
+**************| into inputs when the are not full screen.
+----------------------------------------------------------------------------------
+12) Use javascript to create a button on the top of the sidebar which will toggle the event pane up and down the screen. The problem we are having with data input is that the keyboard reduces the view height, which causes the event pane (which gets bigger/smaller according to the view height) to be erased from the screen. We need a method wherein the event pane is always toggled to cover the full screen when creating an event or updating one.
+    ^^^Once an event is created or updated, we should ideally go back to the indexOfDailyEvents screen on the event pane, and reduce the screen to it's smaller size.
+    ^^One problem with the above approach is that the user may decide to make the screen smaller again, in which case, the keyboard will still cover your inputs
+    ^^^If we do this as a javascript add/remove of a class instead of a checkbox hack, we can account for the user minifying the screen by adding a separate event listener for form submission and button toggling, both of which will minify the screen, but the button toggling will check an event-pane__header. If the event pane showed a "create," or "update," view, then the view would next become "daily index of events," but if the header displayed another view (monthly index of events) then the event pane would be minified and unchanged.
 
-12) Work on the indexOfDailyEvents Event Pane in Javascript. This pane should be on the screen when we select a new day (or on the screen when the app loads, consider how the current day is our initial selected day);
 
+continuous with 12) Work on the indexOfDailyEvents Event Pane in Javascript. This pane should be on the screen when we select a new day (or on the screen when the app loads, consider how the current day is our initial selected day);
 
-?) Add listeners to increment/decrement calendar when swiped left or right.
 
 ?) Modify Schema for color property, and display on calendar/Event Pane with a color-class.
 

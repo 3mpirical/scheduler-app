@@ -1,9 +1,22 @@
-.calendar {
+.calendar-clearfix {
     position: relative;
+    width: 100vw;
+    height: 105vw;
+    transition: 1.5s;
+}
+
+.collapsed {
+    height: 0;
+}
+
+
+.calendar {
+    position: absolute;
     width: 100vw;
     height: 105vw;
     background-color: darken($color-primary-dark, 10%);
     color: $color-off-white;
+    transition: 1.5s;
     //desktop only
     // box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 
@@ -130,6 +143,10 @@
 
 
     }
+}
+
+.opacity-none {
+    opacity: 0;
 }
 
 .calendar__days-header {

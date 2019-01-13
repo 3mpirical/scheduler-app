@@ -25,12 +25,22 @@ body {
   left: 50%;
   transform: translate(-50%, -50%); }
 
-.calendar {
+.calendar-clearfix {
   position: relative;
   width: 100vw;
   height: 105vw;
+  transition: 1.5s; }
+
+.collapsed {
+  height: 0; }
+
+.calendar {
+  position: absolute;
+  width: 100vw;
+  height: 105vw;
   background-color: #222c31;
-  color: #CFD8DC; }
+  color: #CFD8DC;
+  transition: 1.5s; }
   .calendar .calendar__mobile-logo {
     position: absolute;
     width: 20rem;
@@ -127,6 +137,9 @@ body {
       position: absolute;
       background-color: #CFD8DC; }
 
+.opacity-none {
+  opacity: 0; }
+
 .calendar__days-header {
   display: flex;
   justify-content: space-evenly;
@@ -209,23 +222,51 @@ body {
       background-color: #4DB6AC; }
 
 .event-pane {
+  display: flex;
   flex: auto;
   overflow: scroll;
   position: relative;
   width: 100vw;
-  background-color: #37474F;
-  color: #CFD8DC; }
+  background-color: #CFD8DC;
+  color: #CFD8DC;
+  transition: 2s; }
   .event-pane .event-pane__header {
     position: absolute;
-    width: 75%;
+    width: calc(100% * 6/7);
     height: 100%;
-    left: 50%;
-    transform: translateX(-50%);
     font-size: 3rem;
     font-family: "Roboto", sans-serif;
-    background-color: rgba(0, 0, 0, 0.2); }
+    background-color: #222c31;
+    border: 1px solid white;
+    border-right: none;
+    border-top: none;
+    border-radius: 8px; }
     .event-pane .event-pane__header h2 {
+      background-color: #3F51B5;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
       text-align: center; }
+  .event-pane .event-controls {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #37474F;
+    border: 1px solid white;
+    border-top: none;
+    border-radius: 8px;
+    width: calc(100% / 7);
+    height: 100%;
+    touch-action: none; }
+    .event-pane .event-controls__size-toggle {
+      position: relative;
+      height: calc(85vw / 6); }
+      .event-pane .event-controls__size-toggle img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 80%;
+        width: 80%; }
 
 .event-form {
   position: relative;
@@ -300,6 +341,9 @@ body {
     .event-form button :active {
       color: #4DB6AC;
       border-color: #4DB6AC; }
+
+.button-rotate-180 {
+  transform: rotate(180deg); }
 
 header {
   display: none;

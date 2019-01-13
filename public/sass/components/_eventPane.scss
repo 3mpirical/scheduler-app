@@ -1,23 +1,54 @@
 .event-pane {
+    display: flex;
     flex: auto;
     overflow: scroll;
     position: relative;
     width: 100vw;
-    background-color: $color-primary-dark;
+    background-color: $color-off-white;
     color:$color-off-white;
+    transition: 2s;
 
     .event-pane__header {
         position: absolute;
-        width: 75%;
+        width: calc(100% * 6/7 );
         height: 100%;
-        left: 50%;
-        transform: translateX(-50%);
         font-size: 3rem;
         font-family: "Roboto", sans-serif;
-        background-color: rgba(0,0,0, 0.2);
+        background-color: darken($color-primary-dark, 10%);
+        border: 1px solid white;
+        border-right: none;
+        border-top: none;
+        border-radius: 8px;
 
         h2 {
+            background-color: $color-indigo;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
             text-align: center;
+        }
+    }
+
+    .event-controls {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: $color-primary-dark;
+        border: 1px solid white;
+        border-top: none;
+        border-radius: 8px;
+        width: calc(100% / 7);
+        height: 100%;
+        touch-action: none;
+
+        &__size-toggle {
+            position: relative;
+            height: calc(85vw / 6);
+
+            img {
+                @include absolute-center;
+                height: 80%;
+                width: 80%;
+            }
         }
     }
 }
@@ -27,8 +58,6 @@
     display: flex;
     justify-content: space-evenly;
     height: 40rem;
-    // text-align: center;
-    // justify-content: space-evenly;
 
 
     .event-form__labels {
@@ -57,12 +86,10 @@
         font-size: 2.5rem;
 
         .event-form__type {
-            // @include absolute-center;
             width: 100%;
             height: 3rem;
             background-color: $color-off-white;
             border-radius: inherit;
-            // padding-left: 30%;
             text-align-last: center;
             font-size: inherit;
 
@@ -125,6 +152,10 @@
         }
     }
 
-
-
 }
+
+
+.button-rotate-180 {
+    transform: rotate(180deg);
+}
+// transform: translateY( calc( -1* (50vh - (100vh - 105vw))) );

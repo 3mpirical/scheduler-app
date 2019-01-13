@@ -63,7 +63,7 @@ const updateSelectedBox = (event) => {
 const createEventAndReset = (event) => {
     const {type, name, description, day, month, year, time} = elements.newForm;
     console.log(type);
-    
+
     MDL.Event.save({
         type: type.value,
         name: name.value,
@@ -132,8 +132,25 @@ elements.calendarContainer.addEventListener("click", (event) => {
 });
 
 
+
+//form submit to add new event
 elements.newForm.container.addEventListener("submit", (event) => {
     event.preventDefault();
     console.log(`Event: \n${event}`);
     CTRL.createEventAndReset(event);
+});
+
+
+
+//toggle event pane up/down button click
+elements.togglePaneBtn.addEventListener("click", (event) => {
+    if(document.querySelector(".collapsed")) {
+        elements.calendar.classList.remove("opacity-none");
+        elements.calendarClearfix.classList.remove("collapsed");
+        elements.togglePaneBtn.classList.remove("button-rotate-180");
+    } else {
+        elements.calendar.classList.add("opacity-none");
+        elements.calendarClearfix.classList.add("collapsed");
+        elements.togglePaneBtn.classList.add("button-rotate-180");
+    }
 });

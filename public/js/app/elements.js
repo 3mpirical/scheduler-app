@@ -1,4 +1,6 @@
 const elements = {
+    calendar: document.querySelector(".calendar"),
+    calendarClearfix: document.querySelector(".calendar-clearfix"),
     calendarHeading: document.querySelector(".calendar__heading"),
     calendarSelected: document.querySelector(".calendar__selected"),
 
@@ -11,6 +13,8 @@ const elements = {
     calendarContent: () => {
             return [...document.querySelectorAll(".calendar__box-content")];
     },
+    
+    togglePaneBtn: document.querySelector(".event-controls__size-toggle"),
 
     newForm: {
         container: document.querySelector(".event-form"),
