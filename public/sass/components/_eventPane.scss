@@ -6,7 +6,7 @@
     background-color: darken($color-primary-dark, 10%);
     color: $color-off-white;
 
-    .event-pane__header {
+    .event-pane__display {
         position: relative;
         width: calc(100% * 6/7 );
         height: 60rem;
@@ -47,13 +47,26 @@
                 width: 80%;
             }
         }
+
+        &__new-event {
+            position: relative;
+            height: calc(85vw / 6);
+            cursor: pointer;
+
+            img {
+                @include absolute-center;
+                height: 80%;
+                width: 80%;
+            }
+        }
     }
 }
 
 .event-form {
+    display: none;
     position: relative;
     width: 100%;
-    display: flex;
+    // display: flex;
     justify-content: space-evenly;
     font-size: 3.5rem;
 
@@ -66,7 +79,6 @@
         flex-direction: column;
         justify-content: space-evenly;
         border-bottom: 1px solid $color-off-white;
-        // border-right: 1px solid $color-off-white;
 
         label {
             position: relative;
@@ -180,6 +192,10 @@
         cursor: pointer;
     }
 
+}
+
+.display-flex {
+    display: flex;
 }
 
 

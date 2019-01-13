@@ -13,8 +13,9 @@ const elements = {
     calendarContent: () => {
             return [...document.querySelectorAll(".calendar__box-content")];
     },
-    
+
     togglePaneBtn: document.querySelector(".event-controls__size-toggle"),
+    newEventBtn: document.querySelector(".event-controls__new-event"),
 
     newForm: {
         container: document.querySelector(".event-form"),

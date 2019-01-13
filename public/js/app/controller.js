@@ -148,9 +148,23 @@ elements.togglePaneBtn.addEventListener("click", (event) => {
         elements.calendar.classList.remove("opacity-none");
         elements.calendarClearfix.classList.remove("collapsed");
         elements.togglePaneBtn.classList.remove("button-rotate-180");
+        elements.newForm.container.classList.remove("display-flex");
     } else {
         elements.calendar.classList.add("opacity-none");
         elements.calendarClearfix.classList.add("collapsed");
         elements.togglePaneBtn.classList.add("button-rotate-180");
     }
+});
+
+
+
+//toggle New Event Pane
+elements.newEventBtn.addEventListener("click", (event) => {
+    if(!document.querySelector(".collapsed")) {
+        elements.calendar.classList.add("opacity-none");
+        elements.calendarClearfix.classList.add("collapsed");
+        elements.togglePaneBtn.classList.add("button-rotate-180");
+    }
+
+    elements.newForm.container.classList.add("display-flex");
 });
