@@ -97,17 +97,26 @@
 
         <div class="event-pane">
             <div class="event-pane__header">
-                <h2>New Event</h2>
+                <h2><div>New Event</div></h2>
                 <form class="event-form">
 
                     <div class="event-form__labels">
-                        <label for="event-type">Type</label>
-                        <label for="event-name">* Name</label>
-                        <label for="event-description">Description</label>
-                        <label for="event-date">* Date</label>
+                        <label for="event-type">
+                            <div class="label-text">Type</div>
+                        </label>
+                        <label for="event-name">
+                            <div class="label-text">*Name</div>
+                        </label>
+                        <label for="event-description">
+                            <div class="label-text">Text</div>
+                        </label>
+                        <label for="event-date">
+                            <div class="label-text">*Date</div>
+                        </label>
                     </div>
                     <div class="event-form__inputs">
                         <select class="event-form__type" id="event-type" name="type">
+                            <option value=""></option>
                             <option value="Miscellaneous">Miscellaneous</option>
                             <option value="Personal">Personal</option>
                             <option value="Business">Business</option>
