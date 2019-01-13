@@ -20,7 +20,7 @@ const CTRL = (function(MDL, VIEW, state, elements) {
     };
 
     const initializeEventPane = () => {
-        
+
         VIEW.printSelectedHeader();
         VIEW.printSelectedEvents();
     }
@@ -34,7 +34,6 @@ const CTRL = (function(MDL, VIEW, state, elements) {
         }
 
         VIEW.clearHeading();
-        // VIEW.clearSelectedHeader();
         VIEW.clearCalendar();
         VIEW.printHeading();
         VIEW.printCalendarDays(state.headingMonth, state.headingYear);
@@ -49,7 +48,6 @@ const CTRL = (function(MDL, VIEW, state, elements) {
         }
 
         VIEW.clearHeading();
-        // VIEW.clearSelectedHeader();
         VIEW.clearCalendar();
         VIEW.printHeading();
         VIEW.printCalendarDays(state.headingMonth, state.headingYear);
@@ -97,9 +95,14 @@ const CTRL = (function(MDL, VIEW, state, elements) {
     };
 
     const toggleNewEvent = () => {
-        if(!state.calIsCollapsed()) VIEW.toggleEventPaneUp();
+        if(!state.calIsCollapsed()){
+            VIEW.toggleEventPaneUp();
+            setTimeout(VIEW.addNewEventPane, 750);
+        } else {
+            VIEW.addNewEventPane();
+        }
 
-        VIEW.addNewEventPane();
+
     };
 
     return {

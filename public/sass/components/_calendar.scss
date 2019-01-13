@@ -2,7 +2,7 @@
     position: relative;
     width: 100vw;
     height: 105vw;
-    transition: 1.5s;
+    transition: 0.75s;
 }
 
 .collapsed {
@@ -16,7 +16,7 @@
     height: 105vw;
     background-color: darken($color-primary-dark, 10%);
     color: $color-off-white;
-    transition: 1.5s;
+    transition: 0.75s;
     //desktop only
     // box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 

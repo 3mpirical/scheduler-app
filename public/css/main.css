@@ -29,7 +29,7 @@ body {
   position: relative;
   width: 100vw;
   height: 105vw;
-  transition: 1.5s; }
+  transition: 0.75s; }
 
 .collapsed {
   height: 0; }
@@ -40,7 +40,7 @@ body {
   height: 105vw;
   background-color: #222c31;
   color: #CFD8DC;
-  transition: 1.5s; }
+  transition: 0.75s; }
   .calendar .calendar__mobile-logo {
     position: absolute;
     width: 20rem;
