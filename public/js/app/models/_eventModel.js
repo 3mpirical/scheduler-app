@@ -35,6 +35,14 @@ class Event {
         });
     }
 
+    static findByDayMonthYear(day, month, year) {
+        return new Promise((resolve, reject) => {
+            axios.get(`/api/events/${day}/${month}/${year}`)
+            .then((eventData) => console.log(JSON.stringify(eventData, null, 2))) //resolve(eventData.data.data))
+            .catch((err) => console.log(JSON.stringify(eventData, null, 2))); //reject(err.response.data));
+        });
+    }
+
     static findById(_id) {
         return new Promise((resolve, reject) => {
             axios.get(`/api/events/${_id}`)
