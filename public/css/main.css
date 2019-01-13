@@ -251,6 +251,7 @@ body {
     right: 0;
     background-color: #37474F;
     width: calc(100% / 7);
+    min-height: 60rem;
     height: 100%;
     touch-action: none; }
     .event-pane .event-controls__size-toggle {
