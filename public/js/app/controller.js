@@ -15,80 +15,102 @@ const CTRL = (function(MDL, VIEW, state, elements) {
         state.selectedMonth = state.headingMonth;
         state.selectedYear = state.headingYear;
         VIEW.printHeading();
-        VIEW.printSelected();
         VIEW.printCalendarDays(state.headingMonth, state.headingYear);
         VIEW.highlightSelected();
     };
 
-const decrementCalendarMonth = () => {
-    if(state.headingMonth - 1 === -1) {
-        state.headingMonth = 11;
-        state.headingYear -= 1 ;
-    } else {
-        state.headingMonth -=  1;
+    const initializeEventPane = () => {
+        
+        VIEW.printSelectedHeader();
+        VIEW.printSelectedEvents();
     }
 
-    VIEW.clearHeading();
-    VIEW.clearSelected();
-    VIEW.clearCalendar();
-    VIEW.printHeading();
-    VIEW.printCalendarDays(state.headingMonth, state.headingYear);
-    VIEW.highlightSelected();
-};
-const incrementCalendarMonth = () => {
-    if(state.headingMonth + 1 === 12) {
-        state.headingMonth = 0;
-        state.headingYear += 1;
-    } else {
-        state.headingMonth +=  1;
-    }
+    const decrementCalendarMonth = () => {
+        if(state.headingMonth - 1 === -1) {
+            state.headingMonth = 11;
+            state.headingYear -= 1 ;
+        } else {
+            state.headingMonth -=  1;
+        }
 
-    VIEW.clearHeading();
-    VIEW.clearSelected();
-    VIEW.clearCalendar();
-    VIEW.printHeading();
-    VIEW.printCalendarDays(state.headingMonth, state.headingYear);
-    VIEW.highlightSelected();
-};
-
-const updateSelectedBox = (event) => {
-    state.selectedDay = parseInt(event.target.getAttribute("day"));
-    state.selectedMonth = parseInt(event.target.getAttribute("month"));
-    state.selectedYear = parseInt(event.target.getAttribute("year"));
-    VIEW.updateHighlight(event);
-    VIEW.clearSelected();
-    VIEW.printSelected();
-};
-
-const createEventAndReset = (event) => {
-    const {type, name, description, day, month, year, time} = elements.newForm;
-    console.log(type);
-
-    MDL.Event.save({
-        type: type.value,
-        name: name.value,
-        description: description.value,
-        dateExecuting: {
-            day: day.value,
-            month: month.value - 1,
-            year: year.value,
-            time: time.value,
-        },
-    })
-    .then((eventData) => {
+        VIEW.clearHeading();
+        // VIEW.clearSelectedHeader();
         VIEW.clearCalendar();
+        VIEW.printHeading();
         VIEW.printCalendarDays(state.headingMonth, state.headingYear);
         VIEW.highlightSelected();
-    })
-    .catch((err) => console.log(err));
-};
+    };
+    const incrementCalendarMonth = () => {
+        if(state.headingMonth + 1 === 12) {
+            state.headingMonth = 0;
+            state.headingYear += 1;
+        } else {
+            state.headingMonth +=  1;
+        }
+
+        VIEW.clearHeading();
+        // VIEW.clearSelectedHeader();
+        VIEW.clearCalendar();
+        VIEW.printHeading();
+        VIEW.printCalendarDays(state.headingMonth, state.headingYear);
+        VIEW.highlightSelected();
+    };
+
+    const updateSelectedBox = (event) => {
+        state.selectedDay = parseInt(event.target.getAttribute("day"));
+        state.selectedMonth = parseInt(event.target.getAttribute("month"));
+        state.selectedYear = parseInt(event.target.getAttribute("year"));
+        VIEW.updateHighlight(event);
+        VIEW.clearSelectedHeader();
+        VIEW.printSelectedHeader();
+    };
+
+    const createEventAndReset = (event) => {
+        const {type, name, description, day, month, year, time} = elements.newForm;
+        console.log(type);
+
+        MDL.Event.save({
+            type: type.value,
+            name: name.value,
+            description: description.value,
+            dateExecuting: {
+                day: day.value,
+                month: month.value - 1,
+                year: year.value,
+                time: time.value,
+            },
+        })
+        .then((eventData) => {
+            VIEW.clearCalendar();
+            VIEW.printCalendarDays(state.headingMonth, state.headingYear);
+            VIEW.highlightSelected();
+        })
+        .catch((err) => console.log(err));
+    };
+
+    const toggleEventPane = () => {
+        if(state.calIsCollapsed()) {
+            VIEW.toggleEventPaneDown();
+        } else {
+            VIEW.toggleEventPaneUp();
+        }
+    };
+
+    const toggleNewEvent = () => {
+        if(!state.calIsCollapsed()) VIEW.toggleEventPaneUp();
+
+        VIEW.addNewEventPane();
+    };
 
     return {
         initializeCalendar,
+        initializeEventPane,
         decrementCalendarMonth,
         incrementCalendarMonth,
         updateSelectedBox,
         createEventAndReset,
+        toggleEventPane,
+        toggleNewEvent,
     };
 } (MDL, VIEW, state, elements) );
 
@@ -97,6 +119,7 @@ const createEventAndReset = (event) => {
 // APPLICATION EXECUTION ============================
 
 CTRL.initializeCalendar();
+CTRL.initializeEventPane();
 
 
 
@@ -144,27 +167,12 @@ elements.newForm.container.addEventListener("submit", (event) => {
 
 //toggle event pane up/down button click
 elements.togglePaneBtn.addEventListener("click", (event) => {
-    if(document.querySelector(".collapsed")) {
-        elements.calendar.classList.remove("opacity-none");
-        elements.calendarClearfix.classList.remove("collapsed");
-        elements.togglePaneBtn.classList.remove("button-rotate-180");
-        elements.newForm.container.classList.remove("display-flex");
-    } else {
-        elements.calendar.classList.add("opacity-none");
-        elements.calendarClearfix.classList.add("collapsed");
-        elements.togglePaneBtn.classList.add("button-rotate-180");
-    }
+    CTRL.toggleEventPane();
 });
 
 
 
 //toggle New Event Pane
 elements.newEventBtn.addEventListener("click", (event) => {
-    if(!document.querySelector(".collapsed")) {
-        elements.calendar.classList.add("opacity-none");
-        elements.calendarClearfix.classList.add("collapsed");
-        elements.togglePaneBtn.classList.add("button-rotate-180");
-    }
-
-    elements.newForm.container.classList.add("display-flex");
+    CTRL.toggleNewEvent();
 });

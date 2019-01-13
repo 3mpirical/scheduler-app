@@ -14,6 +14,7 @@ const elements = {
             return [...document.querySelectorAll(".calendar__box-content")];
     },
 
+    eventPaneHeader: document.querySelector(".event-pane__header"),
     togglePaneBtn: document.querySelector(".event-controls__size-toggle"),
     newEventBtn: document.querySelector(".event-controls__new-event"),
 
