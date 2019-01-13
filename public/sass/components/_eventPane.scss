@@ -1,16 +1,18 @@
 .event-pane {
-    flex: auto;
-    overflow: scroll;
+    flex: 1 0 auto;
+    overflow-y: scroll;
     position: relative;
     width: 100vw;
+    height: 60rem;
     background-color: darken($color-primary-dark, 10%);
     color: $color-off-white;
 
     .event-pane__display {
         position: relative;
         width: calc(100% * 6/7 );
-        height: 60rem;
-        // overflow: scroll;
+        min-height: 60rem;
+        height: 100%;
+        overflow-y: scroll;
         font-family: "Roboto", sans-serif;
         background-color: darken($color-primary-dark, 10%);
 
@@ -33,8 +35,8 @@
         right: 0;
         background-color: $color-primary-dark;
         width: calc(100% / 7);
-        // min-height: 60rem;
         height: 100%;
+        overflow-y: scroll;
         touch-action: none;
 
         &__size-toggle {
@@ -67,7 +69,8 @@
     display: none;
     position: relative;
     width: 100%;
-    // display: flex;
+    min-height: 60rem;
+    height: 100%;
     justify-content: space-evenly;
     font-size: 3.5rem;
 
@@ -78,7 +81,6 @@
         position: relative;
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
         border-bottom: 1px solid $color-off-white;
 
         label {

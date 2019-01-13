@@ -29,7 +29,8 @@ body {
   position: relative;
   width: 100vw;
   height: 105vw;
-  transition: 0.75s; }
+  transition: 0.75s;
+  animation-timing-function: ease-out; }
 
 .collapsed {
   height: 0; }
@@ -222,16 +223,19 @@ body {
       background-color: #4DB6AC; }
 
 .event-pane {
-  flex: auto;
-  overflow: scroll;
+  flex: 1 0 auto;
+  overflow-y: scroll;
   position: relative;
   width: 100vw;
+  height: 60rem;
   background-color: #222c31;
   color: #CFD8DC; }
   .event-pane .event-pane__display {
     position: relative;
     width: calc(100% * 6/7);
-    height: 60rem;
+    min-height: 60rem;
+    height: 100%;
+    overflow-y: scroll;
     font-family: "Roboto", sans-serif;
     background-color: #222c31; }
     .event-pane .event-pane__display h2 {
@@ -253,6 +257,7 @@ body {
     background-color: #37474F;
     width: calc(100% / 7);
     height: 100%;
+    overflow-y: scroll;
     touch-action: none; }
     .event-pane .event-controls__size-toggle {
       position: relative;
@@ -281,6 +286,8 @@ body {
   display: none;
   position: relative;
   width: 100%;
+  min-height: 60rem;
+  height: 100%;
   justify-content: space-evenly;
   font-size: 3.5rem; }
   .event-form .event-form__labels {
@@ -289,7 +296,6 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     border-bottom: 1px solid #CFD8DC; }
     .event-form .event-form__labels label {
       position: relative;
