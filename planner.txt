@@ -74,20 +74,25 @@ PLANNED_IMPLEMENTATIONS_________________________________________________________
 //11) Hard code the "New Event," pane into hbs, and make it functional.
 /////complete
 
+//////////////////////////////////////////////////////
 ----------------------------------------------------------------------------------
 **************| for now, just create the button which toggles, and when we create
 **************| the view which gives us the "index of daily events," we will add
 **************| the extra features to make sure the user won't enter information
 **************| into inputs when the are not full screen.
 ----------------------------------------------------------------------------------
-12) Use javascript to create a button on the top of the sidebar which will toggle the event pane up and down the screen. The problem we are having with data input is that the keyboard reduces the view height, which causes the event pane (which gets bigger/smaller according to the view height) to be erased from the screen. We need a method wherein the event pane is always toggled to cover the full screen when creating an event or updating one.
+//12) Use javascript to create a button on the top of the sidebar which will toggle the event pane up and down the screen. The problem we are having with data input is that the keyboard reduces the view height, which causes the event pane (which gets bigger/smaller according to the view height) to be erased from the screen. We need a method wherein the event pane is always toggled to cover the full screen when creating an event or updating one.
     ^^^Once an event is created or updated, we should ideally go back to the indexOfDailyEvents screen on the event pane, and reduce the screen to it's smaller size.
     ^^One problem with the above approach is that the user may decide to make the screen smaller again, in which case, the keyboard will still cover your inputs
     ^^^If we do this as a javascript add/remove of a class instead of a checkbox hack, we can account for the user minifying the screen by adding a separate event listener for form submission and button toggling, both of which will minify the screen, but the button toggling will check an event-pane__header. If the event pane showed a "create," or "update," view, then the view would next become "daily index of events," but if the header displayed another view (monthly index of events) then the event pane would be minified and unchanged.
 
 
 continuous with 12) Work on the indexOfDailyEvents Event Pane in Javascript. This pane should be on the screen when we select a new day (or on the screen when the app loads, consider how the current day is our initial selected day);
+//////////////////////////////////////////////////////
+////////////////////// COMPLETE //////////////////////
+//////////////////////////////////////////////////////
 
+13) Refactor code, both css and javascript, before you go any further. Make a list of small improvements/bugs to fix when time becomes available.
 
 ?) Modify Schema for color property, and display on calendar/Event Pane with a color-class.
 
