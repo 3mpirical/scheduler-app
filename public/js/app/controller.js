@@ -75,7 +75,7 @@ const CTRL = (function(MDL, VIEW, state, elements) {
                 day: day.value,
                 month: month.value - 1,
                 year: year.value,
-                time: (type.time === "")? undefined : type.time,
+                time: (time.value === "")? undefined : time.value,
             },
         })
         .then((eventData) => {
@@ -106,7 +106,7 @@ const CTRL = (function(MDL, VIEW, state, elements) {
                 day: day.value,
                 month: month.value - 1,
                 year: year.value,
-                time: (type.time === "")? undefined : type.time,
+                time: (time.value === "")? undefined : time.value,
             },
         })
         .then((eventData) => {
@@ -164,13 +164,12 @@ const CTRL = (function(MDL, VIEW, state, elements) {
 
         MDL.Event.findByIdAndDelete(_id)
         .then((eventData) => {
-            console.log(JSON.stringify(eventData, null, 2))
             VIEW.clearCalendar();
             VIEW.clearSelectedEvents();
             VIEW.printCalendarDays(state.headingMonth, state.headingYear);
             VIEW.printSelectedEvents();
         })
-        .catch((err) => console.log(JSON.stringify(err, null, 2)))
+        .catch((err) => console.log(JSON.stringify(err, null, 2)));
     };
 
     return {
@@ -256,13 +255,19 @@ elements.newEventBtn.addEventListener("click", (event) => {
 //---------refactor this as a checkbox hack?
 elements.eventIndex.addEventListener("click", (event) => {
     if (event.target.matches(".event-index__event-container")) {
+
         event.target.classList.toggle("full-height");
+
     } else if(event.target.matches(".event-index__left")
     || event.target.matches(".event-index__event-name")
     || event.target.matches(".event-index__description")) {
+
         event.target.parentNode.classList.toggle("full-height");
+
     } else if(event.target.matches(".event-index__bottom__delete")) {
+
         CTRL.deleteEventAndUpdateView(event);
+
     } else if(event.target.matches(".event-index__bottom__edit")) {
         const {type, name, description, day, month, year, time} = elements.newForm;
         const _id = event.target.parentNode.parentNode.getAttribute("_id");
@@ -294,6 +299,6 @@ elements.eventIndex.addEventListener("click", (event) => {
                 elements.newForm.name.focus();
             }
         })
-        .catch((err) => console.log(JSON.stringify(err, null, 2)))
+        .catch((err) => console.log(JSON.stringify(err, null, 2)));
     }
 });
