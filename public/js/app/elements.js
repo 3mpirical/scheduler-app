@@ -18,6 +18,11 @@ const elements = {
     togglePaneBtn: document.querySelector(".event-controls__size-toggle"),
     newEventBtn: document.querySelector(".event-controls__new-event"),
 
+    eventIndex: document.querySelector(".event-index"),
+    eventContainers: () => {
+        return [...document.querySelectorAll("event-index__event-container")];
+    },
+
     newForm: {
         container: document.querySelector(".event-form"),
         type: document.querySelector(".event-form__type"),

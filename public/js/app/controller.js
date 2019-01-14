@@ -23,7 +23,7 @@ const CTRL = (function(MDL, VIEW, state, elements) {
 
         VIEW.printSelectedHeader();
         VIEW.printSelectedEvents();
-    }
+    };
 
     const decrementCalendarMonth = () => {
         if(state.headingMonth - 1 === -1) {
@@ -61,6 +61,8 @@ const CTRL = (function(MDL, VIEW, state, elements) {
         VIEW.updateHighlight(event);
         VIEW.clearSelectedHeader();
         VIEW.printSelectedHeader();
+        VIEW.clearSelectedEvents();
+        VIEW.printSelectedEvents();
     };
 
     const createEventAndReset = (event) => {
@@ -82,6 +84,13 @@ const CTRL = (function(MDL, VIEW, state, elements) {
             VIEW.clearCalendar();
             VIEW.printCalendarDays(state.headingMonth, state.headingYear);
             VIEW.highlightSelected();
+            type.value = "";
+            name.value = "";
+            description.value = "";
+            day.value = "";
+            month.value = "";
+            year.value = "";
+            time.value = "";
         })
         .catch((err) => console.log(err));
     };
@@ -97,8 +106,12 @@ const CTRL = (function(MDL, VIEW, state, elements) {
     const toggleNewEvent = () => {
         if(!state.calIsCollapsed()){
             VIEW.toggleEventPaneUp();
-            setTimeout(VIEW.addNewEventPane, 750);
+            setTimeout(() => {
+                VIEW.hideSelectedEvents();
+                VIEW.addNewEventPane();
+            }, 750);
         } else {
+            VIEW.hideSelectedEvents();
             VIEW.addNewEventPane();
         }
 
@@ -178,4 +191,16 @@ elements.togglePaneBtn.addEventListener("click", (event) => {
 //toggle New Event Pane
 elements.newEventBtn.addEventListener("click", (event) => {
     CTRL.toggleNewEvent();
+});
+
+//show full event on touch
+//---------refactor this as a checkbox hack?
+elements.eventIndex.addEventListener("click", (event) => {
+    if (event.target.matches(".event-index__event-container")) {
+        event.target.classList.toggle("full-height");
+    } else if(event.target.matches(".event-index__left")
+    || event.target.matches(".event-index__event-name")
+    || event.target.matches(".event-index__description")) {
+        event.target.parentNode.classList.toggle("full-height");
+    }
 });
