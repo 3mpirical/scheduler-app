@@ -114,10 +114,12 @@ const CTRL = (function(MDL, VIEW, state, elements) {
             setTimeout(() => {
                 VIEW.hideSelectedEvents();
                 VIEW.addNewEventPane();
+                elements.newForm.name.focus();
             }, 750);
         } else {
             VIEW.hideSelectedEvents();
             VIEW.addNewEventPane();
+            elements.newForm.name.focus();
         }
     };
 

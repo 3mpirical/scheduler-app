@@ -99,11 +99,11 @@
                 <form class="event-form">
 
                     <div class="event-form__labels">
-                        <label for="event-type">
-                            <div class="label-text">Type</div>
-                        </label>
                         <label for="event-name">
                             <div class="label-text">*Name</div>
+                        </label>
+                        <label for="event-type">
+                            <div class="label-text">Type</div>
                         </label>
                         <label for="event-description">
                             <div class="label-text">Text</div>
@@ -113,6 +113,9 @@
                         </label>
                     </div>
                     <div class="event-form__inputs">
+
+                        <input class="event-form__name" id="event-name" type="text" name="name" required>
+
                         <select class="event-form__type" id="event-type" name="type">
                             <option value=""></option>
                             <option value="Miscellaneous">Miscellaneous</option>
@@ -120,9 +123,6 @@
                             <option value="Business">Business</option>
                             <option value="Holiday">Holiday</option>
                         </select>
-
-                        <input class="event-form__name" id="event-name" type="text" name="name" required>
-
 
                         <textarea class="event-form__description" id="event-description" name="description" rows="8" cols="80"></textarea>
 
