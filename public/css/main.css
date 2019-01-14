@@ -232,7 +232,8 @@ body {
   width: 100vw;
   height: 100%;
   background-color: #222c31;
-  color: #CFD8DC; }
+  color: #CFD8DC;
+  overflow-y: scroll; }
   .event-pane .event-pane__display {
     position: relative;
     width: calc(100% * 10/11);
@@ -242,6 +243,7 @@ body {
     background-color: #222c31; }
     .event-pane .event-pane__display h2 {
       position: relative;
+      z-index: 100;
       height: 8rem;
       background-color: #3F51B5;
       text-align: center;
@@ -397,7 +399,6 @@ body {
   display: none;
   flex-direction: column;
   position: relative;
-  height: 100%;
   width: 100%;
   overflow-y: scroll; }
   .event-index__event-container {

@@ -5,6 +5,7 @@
     height: 100%;
     background-color: darken($color-primary-dark, 10%);
     color: $color-off-white;
+    overflow-y: scroll;
 
     .event-pane__display {
         position: relative;
@@ -16,6 +17,7 @@
 
         h2 {
             position: relative;
+            z-index: 100;
             height: 8rem;
             background-color: $color-indigo;
             text-align: center;
@@ -206,7 +208,6 @@
     display: none;
     flex-direction: column;
     position: relative;
-    height: 100%;
     width: 100%;
     overflow-y: scroll;
 
