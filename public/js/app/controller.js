@@ -20,9 +20,12 @@ const CTRL = (function(MDL, VIEW, state, elements) {
     };
 
     const initializeEventPane = () => {
-
+        const {day, month, year, time} = elements.newForm;
         VIEW.printSelectedHeader();
         VIEW.printSelectedEvents();
+        day.value = state.selectedDay;
+        month.value = state.selectedMonth + 1;
+        year.value = state.selectedYear;
     };
 
     const decrementCalendarMonth = () => {
@@ -55,6 +58,7 @@ const CTRL = (function(MDL, VIEW, state, elements) {
     };
 
     const updateSelectedBox = (event) => {
+        const {day, month, year, time} = elements.newForm;
         state.selectedDay = parseInt(event.target.getAttribute("day"));
         state.selectedMonth = parseInt(event.target.getAttribute("month"));
         state.selectedYear = parseInt(event.target.getAttribute("year"));
@@ -63,27 +67,34 @@ const CTRL = (function(MDL, VIEW, state, elements) {
         VIEW.printSelectedHeader();
         VIEW.clearSelectedEvents();
         VIEW.printSelectedEvents();
+        day.value = state.selectedDay;
+        month.value = state.selectedMonth + 1;
+        year.value = state.selectedYear;
     };
 
     const createEventAndReset = (event) => {
         const {type, name, description, day, month, year, time} = elements.newForm;
-        console.log(type);
+
+        console.log(type.value === '');
+        console.log(time.value === '');
 
         MDL.Event.save({
-            type: type.value,
+            type: (type.value === "")? undefined : type.value,
             name: name.value,
             description: description.value,
             dateExecuting: {
                 day: day.value,
                 month: month.value - 1,
                 year: year.value,
-                time: time.value,
+                time: (type.time === "")? undefined : type.time,
             },
         })
         .then((eventData) => {
             VIEW.clearCalendar();
             VIEW.printCalendarDays(state.headingMonth, state.headingYear);
             VIEW.highlightSelected();
+            VIEW.clearSelectedEvents();
+            VIEW.printSelectedEvents();
             type.value = "";
             name.value = "";
             description.value = "";
