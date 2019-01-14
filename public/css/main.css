@@ -448,11 +448,13 @@ body {
     text-align: center; }
   .event-index__description {
     display: block;
+    width: 75%;
     margin-top: 14rem;
     position: relative;
     transform: translateX(-50%);
     left: 50%;
-    font-size: 3.5rem; }
+    font-size: 3.5rem;
+    text-align: center; }
   .event-index__bottom {
     display: block;
     width: 100%;

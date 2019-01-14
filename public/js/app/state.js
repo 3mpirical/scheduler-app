@@ -9,6 +9,8 @@ const state = {
     selectedBox: null,
     indexOfBox: null,
 
+    selectedId: null,
+
     calIsCollapsed: () => {
         return document.querySelector(".collapsed")? true : false;
     },

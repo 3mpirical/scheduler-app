@@ -55,36 +55,39 @@ const eventPaneView = {
         const {selectedDay, selectedMonth, selectedYear} = state;
         MDL.Event.findByDayMonthYear(selectedDay, selectedMonth, selectedYear)
         .then((eventData) => {
-            eventData.map((item, index, arr) => {
-                const node = document.createElement("div");
-                node.classList.add("event-index__event-container");
-                node.innerHTML = `
-                <p class="event-index__left">
-                    ${item.type}<br>Time : ${item.dateExecuting.time}
-                </p>
+            if(Array.isArray(eventData)) {
+                eventData.map((item, index, arr) => {
+                    const node = document.createElement("div");
+                    node.setAttribute("_id", item._id);
+                    node.classList.add("event-index__event-container");
+                    node.innerHTML = `
+                    <p class="event-index__left">
+                        ${item.type}<br>Time: ${item.dateExecuting.time}
+                    </p>
 
-                <div class="event-index__event-name">${item.name}</div>
+                    <div class="event-index__event-name">${item.name}</div>
 
-                <hr>
+                    <hr>
 
-                <div class="event-index__description">
-                    ${item.description}
-                </div>
+                    <div class="event-index__description">
+                        ${item.description}
+                    </div>
 
-                <div class="event-index__bottom">
-                    <img class="event-index__bottom__edit" src="./img/pencil.svg" alt="edit with pencil icon"></img>
-                    <img class="event-index__bottom__delete" src="./img/trash-can.svg" alt="delete with trash can icon"></img>
-                </div>
+                    <div class="event-index__bottom">
+                        <img class="event-index__bottom__edit" src="./img/pencil.svg" alt="edit with pencil icon"></img>
+                        <img class="event-index__bottom__delete" src="./img/trash-can.svg" alt="delete with trash can icon"></img>
+                    </div>
 
-                `;
-                return node;
-            })
-            .forEach((item, index, arr) => {
-                elements.eventIndex.appendChild(item);
-            });
+                    `;
+                    return node;
+                })
+                .forEach((item, index, arr) => {
+                    elements.eventIndex.appendChild(item);
+                });
+            }
         })
         .catch((err) => console.log(err));
-    }
+    },
 
 };
 

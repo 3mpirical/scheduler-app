@@ -271,11 +271,13 @@
 
     &__description {
         display: block;
+        width: 75%;
         margin-top: 14rem;
         position: relative;
         transform: translateX(-50%);
         left: 50%;
         font-size: 3.5rem;
+        text-align: center;
     }
 
     &__bottom {
