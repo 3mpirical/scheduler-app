@@ -233,14 +233,18 @@ body {
   height: 100%;
   background-color: #222c31;
   color: #CFD8DC;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px; }
   .event-pane .event-pane__display {
     position: relative;
     width: calc(100% * 10/11);
     height: 100%;
     overflow-y: scroll;
     font-family: "Roboto", sans-serif;
-    background-color: #222c31; }
+    background-color: #222c31;
+    box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.4);
+    z-index: 100; }
     .event-pane .event-pane__display h2 {
       position: relative;
       z-index: 100;
@@ -261,7 +265,8 @@ body {
     background-color: #37474F;
     width: calc(100% * 1/11);
     height: 100%;
-    touch-action: none; }
+    touch-action: none;
+    border-top-right-radius: 8px; }
     .event-pane .event-controls__size-toggle {
       position: relative;
       height: calc(85vw / 9);
@@ -404,7 +409,7 @@ body {
   .event-index__event-container {
     position: relative;
     width: 100%;
-    max-height: 10rem;
+    max-height: 8rem;
     background-color: #3F51B5;
     font-size: 4rem;
     border-top: 1px solid #CFD8DC;
@@ -418,31 +423,31 @@ body {
       font-weight: bold; }
     .event-index__event-container hr {
       position: absolute;
-      top: 10rem;
+      top: 8rem;
       left: 0;
       width: 100%;
-      border: 1px solid rgba(207, 216, 220, 0.5); }
+      border: 1px solid rgba(207, 216, 220, 0.3); }
   .event-index .full-height {
     max-height: 60rem; }
   .event-index__left {
     position: absolute;
     transform: translate(-50%, -50%);
-    top: 5rem;
+    top: 4rem;
     left: 15%;
-    height: 10rem;
+    height: 8rem;
     width: 30%;
     background-color: #455A64;
     border-right: 1px solid #CFD8DC;
     padding-left: 30px;
-    padding-top: 10px;
+    padding-top: 6px;
     text-align: left;
-    font-size: 3.5rem;
+    font-size: 3rem;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px; }
   .event-index__event-name {
     position: absolute;
     transform: translate(-50%, -50%);
-    top: 5rem;
+    top: 4rem;
     left: 65%;
     width: 50%;
     text-align: center; }
