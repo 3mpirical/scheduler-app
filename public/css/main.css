@@ -16,7 +16,9 @@ body {
 .app-container {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100vh; }
 
 .u-absolute-center {
@@ -29,8 +31,9 @@ body {
   position: relative;
   width: 100vw;
   height: 105vw;
+  flex: none;
   transition: 0.75s;
-  animation-timing-function: ease-out; }
+  animation-timing-function: linear; }
 
 .collapsed {
   height: 0; }
@@ -223,17 +226,16 @@ body {
       background-color: #4DB6AC; }
 
 .event-pane {
-  flex: 1 0 auto;
+  flex: auto;
   overflow-y: scroll;
   position: relative;
   width: 100vw;
-  height: 60rem;
+  height: 100%;
   background-color: #222c31;
   color: #CFD8DC; }
   .event-pane .event-pane__display {
     position: relative;
-    width: calc(100% * 6/7);
-    min-height: 60rem;
+    width: calc(100% * 10/11);
     height: 100%;
     overflow-y: scroll;
     font-family: "Roboto", sans-serif;
@@ -255,13 +257,13 @@ body {
     top: 0;
     right: 0;
     background-color: #37474F;
-    width: calc(100% / 7);
+    width: calc(100% * 1/11);
     height: 100%;
     overflow-y: scroll;
     touch-action: none; }
     .event-pane .event-controls__size-toggle {
       position: relative;
-      height: calc(85vw / 6);
+      height: calc(85vw / 9);
       cursor: pointer; }
       .event-pane .event-controls__size-toggle img {
         position: absolute;
@@ -272,7 +274,7 @@ body {
         width: 80%; }
     .event-pane .event-controls__new-event {
       position: relative;
-      height: calc(85vw / 6);
+      height: calc(85vw / 9);
       cursor: pointer; }
       .event-pane .event-controls__new-event img {
         position: absolute;
@@ -286,8 +288,7 @@ body {
   display: none;
   position: relative;
   width: 100%;
-  min-height: 60rem;
-  height: 100%;
+  height: 60rem;
   justify-content: space-evenly;
   font-size: 3.5rem; }
   .event-form .event-form__labels {
@@ -295,8 +296,7 @@ body {
     width: 16.66667%;
     position: relative;
     display: flex;
-    flex-direction: column;
-    border-bottom: 1px solid #CFD8DC; }
+    flex-direction: column; }
     .event-form .event-form__labels label {
       position: relative;
       height: 8rem;
@@ -317,7 +317,6 @@ body {
     color: #CFD8DC;
     background-color: #222c31;
     border: none;
-    border-bottom: 1px solid #CFD8DC;
     box-shadow: none;
     outline: none;
     font-family: "Roboto"; }

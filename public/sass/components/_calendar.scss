@@ -2,8 +2,9 @@
     position: relative;
     width: 100vw;
     height: 105vw;
+    flex: none;
     transition: 0.75s;
-    animation-timing-function: ease-out;
+    animation-timing-function: linear;
 }
 
 .collapsed {
