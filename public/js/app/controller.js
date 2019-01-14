@@ -20,12 +20,8 @@ const CTRL = (function(MDL, VIEW, state, elements) {
     };
 
     const initializeEventPane = () => {
-        const {day, month, year, time} = elements.newForm;
         VIEW.printSelectedHeader();
         VIEW.printSelectedEvents();
-        day.value = state.selectedDay;
-        month.value = state.selectedMonth + 1;
-        year.value = state.selectedYear;
     };
 
     const decrementCalendarMonth = () => {
@@ -58,7 +54,6 @@ const CTRL = (function(MDL, VIEW, state, elements) {
     };
 
     const updateSelectedBox = (event) => {
-        const {day, month, year, time} = elements.newForm;
         state.selectedDay = parseInt(event.target.getAttribute("day"));
         state.selectedMonth = parseInt(event.target.getAttribute("month"));
         state.selectedYear = parseInt(event.target.getAttribute("year"));
@@ -67,16 +62,10 @@ const CTRL = (function(MDL, VIEW, state, elements) {
         VIEW.printSelectedHeader();
         VIEW.clearSelectedEvents();
         VIEW.printSelectedEvents();
-        day.value = state.selectedDay;
-        month.value = state.selectedMonth + 1;
-        year.value = state.selectedYear;
     };
 
     const createEventAndReset = (event) => {
         const {type, name, description, day, month, year, time} = elements.newForm;
-
-        console.log(type.value === '');
-        console.log(time.value === '');
 
         MDL.Event.save({
             type: (type.value === "")? undefined : type.value,
@@ -115,6 +104,11 @@ const CTRL = (function(MDL, VIEW, state, elements) {
     };
 
     const toggleNewEvent = () => {
+        const {day, month, year, time} = elements.newForm;
+        day.value = state.selectedDay;
+        month.value = state.selectedMonth + 1;
+        year.value = state.selectedYear;
+
         if(!state.calIsCollapsed()){
             VIEW.toggleEventPaneUp();
             setTimeout(() => {
@@ -125,8 +119,6 @@ const CTRL = (function(MDL, VIEW, state, elements) {
             VIEW.hideSelectedEvents();
             VIEW.addNewEventPane();
         }
-
-
     };
 
     return {
